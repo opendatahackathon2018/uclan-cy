@@ -1,2 +1,2 @@
 # cyprus-water
-Implements an open data repository containing data about water resources in Cyprus
+Implements an open repository containing data about water resources in Cyprus
