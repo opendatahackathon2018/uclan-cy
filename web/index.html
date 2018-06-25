@@ -50,13 +50,38 @@
 
     <div class="api_call">
 
-        <p class="question">/api/date-statistics</p>
-        <p class="answer">Queries the <i>statistics</i> of water reservoirs on a specific date. The query uses the format yyyy-MM-dd
-            (e.g. "?date=2018-06-21" to query the statistics for June 21st, 2018, or if no data exist for this date, then the latest date before the specified one).
-            If no date parameter is specified, the server implies the current date. The reply is encoded in JSON.</p>
+        <p class="question">/api/dams</p>
+        <p class="answer">Queries static information about the main water reservoirs (dams) in Cyprus. The reply is encoded in JSON.</p>
 
         <div class="input-group">
             <div class="input-group-button">
+                <span class="link-to-github">Returns an array of <code><a href="https://github.com/nearchos/cyprus-water/blob/master/src/io/github/nearchos/water/data/Dam.java" target="_blank">Dam</a></code>s</span>
+                <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/api/dams','_blank');">
+                    Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
+                </button>
+                <button class="btn" data-clipboard-target="#api_data_dams" title="Copy to clipboard">
+                    Copy <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
+                </button>
+            </div>
+            <div class="html hljs snippet" id="api_data_dams">
+                <code>https://cyprus-water.appspot.com/api/dams</code>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="api_call">
+
+        <p class="question">/api/date-statistics</p>
+        <p class="answer">Queries the <i>statistics</i> of water reservoirs on a specific date. The query uses the format yyyy-MM-dd
+            (e.g. "?date=2018-06-21" to query the statistics for June 21st, 2018, or if no data exist for this date, then the latest date before the specified one).
+            If no date parameter is specified, the server implies the current date.
+            <!--The "<code>/api/inflows</code>" and "<code>/api/storage</code>" are equivalent aliases.-->
+            The reply is encoded in JSON.</p>
+
+        <div class="input-group">
+            <div class="input-group-button">
+                <span class="link-to-github">Returns an instance of <code><a href="https://github.com/nearchos/cyprus-water/blob/master/src/io/github/nearchos/water/data/DayStatistics.java" target="_blank">DayStatistics</a></code></span>
                 <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/api/date-statistics?date=2018-06-21','_blank');">
                     Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
                 </button>
@@ -79,6 +104,7 @@
 
         <div class="input-group">
             <div class="input-group-button">
+                <span class="link-to-github">Returns an instance of <code><a href="https://github.com/nearchos/cyprus-water/blob/master/src/io/github/nearchos/water/data/DamsPercentage.java" target="_blank">DamsPercentage</a></code></span>
                 <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/api/percentages?date=2018-06-21','_blank');">
                     Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
                 </button>
@@ -98,10 +124,11 @@
 
     <div class="api_call">
         <p class="question">/sync/grab</p>
-        <p class="answer">Triggers a <i>grab</i> from the source website (requires authentication and admin rights which you most likely don't have).</p>
+        <p class="answer">Triggers a <i>grab</i> from the source website (requires authentication and admin rights which you most likely don't have). Returns a message encoded in JSON.</p>
 
         <div class="input-group">
             <div class="input-group-button">
+                <span class="link-to-github">The reply is an instance of <code><a href="https://github.com/nearchos/cyprus-water/blob/master/src/io/github/nearchos/water/api/Message.java" target="_blank">Message</a></code></span>
                 <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/sync/grab','_blank');">
                     Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
                 </button>

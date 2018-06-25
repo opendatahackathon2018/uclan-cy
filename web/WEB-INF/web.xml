@@ -20,6 +20,8 @@
     <servlet-mapping>
         <servlet-name>GetDayStatisticsServlet</servlet-name>
         <url-pattern>/api/date-statistics</url-pattern>
+        <url-pattern>/api/inflow</url-pattern>
+        <url-pattern>/api/storage</url-pattern>
     </servlet-mapping>
 
     <servlet>

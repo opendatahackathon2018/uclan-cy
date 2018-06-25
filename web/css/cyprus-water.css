@@ -34,6 +34,11 @@ body {
     margin-top: 1em;
 }
 
+.link-to-github {
+    color: #3f3f3f;
+    font-size: 14px;
+}
+
 p {
     color: #3f3f3f;
     font-size: 16px;
