@@ -6,12 +6,60 @@
 
     <servlet>
         <servlet-name>GrabServlet</servlet-name>
-        <servlet-class>io.github.nearchos.water.GrabServlet</servlet-class>
+        <servlet-class>io.github.nearchos.water.sync.GrabServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>GrabServlet</servlet-name>
-        <url-pattern>/grab</url-pattern>
+        <url-pattern>/sync/grab</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetDayStatisticsServlet</servlet-name>
+        <servlet-class>io.github.nearchos.water.api.GetDayStatisticsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetDayStatisticsServlet</servlet-name>
+        <url-pattern>/api/date-statistics</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetDamsServlet</servlet-name>
+        <servlet-class>io.github.nearchos.water.api.GetDamsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetDamsServlet</servlet-name>
+        <url-pattern>/api/dams</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetPercentageServlet</servlet-name>
+        <servlet-class>io.github.nearchos.water.api.GetPercentageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetPercentageServlet</servlet-name>
+        <url-pattern>/api/percentages</url-pattern>
+    </servlet-mapping>
+
+    <!--Security constraints-->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>api</web-resource-name>
+            <url-pattern>/api/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>cron</web-resource-name>
+            <url-pattern>/sync/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <!--End of Security constraints-->
 
 </web-app>

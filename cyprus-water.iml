@@ -30,5 +30,19 @@
     <orderEntry type="library" name="jsoup-1.11.2" level="project" />
     <orderEntry type="library" name="guava-23.0" level="project" />
     <orderEntry type="library" name="poi-3.17" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jxl-2.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="com.google.code.gson:gson:2.8.5" level="application" />
+    <orderEntry type="library" name="clipboard" level="application" />
+    <orderEntry type="library" name="clipboard" level="application" />
+    <orderEntry type="library" name="d3.v5" level="application" />
+    <orderEntry type="library" name="d3.v3" level="application" />
   </component>
 </module>

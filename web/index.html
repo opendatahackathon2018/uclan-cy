@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cyprus Water - Open Data and API</title>
+    <link rel="stylesheet" href="css/cyprus-water.css">
+    <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v2.0.0/dist/clipboard.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+    <script src="js/liquidFillGauge.js" language="JavaScript"></script>
+</head>
+
+<body onload="loadDamsAverageLevel()">
+    <p class="title">Cyprus Water</p>
+
+    <p class="subtitle">Welcome to Cyprus Water, an open repository of data and functionality on water reservoires in Cyprus.</p>
+
+    <div style="margin: 50px;">
+        <!--Gauge as per http://bl.ocks.org/brattonc/5e5ce9beee483220e2f6-->
+        <svg id="water-gauge" width="100%" height="200"></svg>
+        <p style="text-align: center; color: #4444FF; font-weight: bold;">Percentage of water level across all reservoirs in Cyprus</p>
+    </div>
+
+    <p class="section">Frequently Asked Questions (FAQ)</p>
+
+    <p class="question">What is this website?</p>
+    <p class="answer">This is an open repository of information and functionality related to Cyprus' water reservoirs and their storage. You can learn about dams in Cyprus and their storage presently, and in the past.</p>
+
+    <p class="question">Where do you get the data from?</p>
+    <p class="answer">From the website of the Water Development Environment which you can access <a href="http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/reservoir_en/reservoir_en?OpenDocument" target="_blank">here</a>.</p>
+
+    <p class="question">Can I create an app that uses this data?</p>
+    <p class="answer">Yes. You can use the API described below. If you do this, we expect you to follow make fair use of the resource which is provided for free and without any guarantee. We would also appreciate but not require an attribution.</p>
+
+    <p class="question">How do I attribute this project, its data and its services?</p>
+    <p class="answer">Use the following text</p>
+    <blockquote>Use of <a href="http://cyprus-water.appspot.com">cyprus-water</a> data and functionality is licensed under <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a></blockquote>
+    <p class="answer">which you could produce with this sample HTML code</p>
+
+    <div class="input-group">
+        <div class="input-group-button">
+            <button class="btn" data-clipboard-target="#copyright_html" title="Copy to clipboard">
+                Copy <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
+            </button>
+        </div>
+        <div class="html hljs snippet" id="copyright_html">
+            <code>Use of &lt;a href=&quot;http://cyprus-water.appspot.com&quot;&gt;cyprus-water&lt;/a&gt; data and functionality is licensed under &lt;a href=&quot;https://creativecommons.org/licenses/by/2.0/&quot; target=&quot;_blank&quot;&gt;CC BY 2.0&lt;/a&gt;</code>
+        </div>
+    </div>
+
+    <p class="section">Application Programming Interface (API)</p>
+
+    <p class="question">/sync/grab</p>
+    <p class="answer">Triggers a <i>grab</i> from the source website (requires authentication and admin rights which you most likely don't have).</p>
+
+    <div class="input-group">
+        <div class="input-group-button">
+            <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/sync/grab','_blank');">
+                Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
+            </button>
+            <button class="btn" data-clipboard-target="#api_sync_grab" title="Copy to clipboard">
+                Copy <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
+            </button>
+        </div>
+        <div class="html hljs snippet" id="api_sync_grab">
+            <code>https://cyprus-water.appspot.com/sync/grab</code>
+        </div>
+    </div>
+
+
+    <p class="question">/api/date-statistics</p>
+    <p class="answer">Queries the <i>statistics</i> of water reservoirs on a specific date. The query uses the format yyyy-MM-dd
+        (e.g. "?date=2018-06-21" to query the statistics for June 21st, 2018, or if no data exist for this date, then the latest date before the specified one).
+        If no date parameter is specified, the server implies the current date. The reply is encoded in JSON.</p>
+
+    <div class="input-group">
+        <div class="input-group-button">
+            <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/api/date-statistics?date=2018-06-21','_blank');">
+                Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
+            </button>
+            <button class="btn" data-clipboard-target="#api_data_statistics" title="Copy to clipboard">
+                Copy <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
+            </button>
+        </div>
+        <div class="html hljs snippet" id="api_data_statistics">
+            <code>https://cyprus-water.appspot.com/api/date-statistics?date=2018-06-21</code>
+        </div>
+    </div>
+
+
+    <p class="question">/api/percentages</p>
+    <p class="answer">Queries the storage <i>percentages</i> of the main water reservoirs on a specific date. The query uses the format yyyy-MM-dd
+        (e.g. "?date=2018-06-21" to query the percentages for June 21st, 2018, or if no data exist for this date, then the latest date before the specified one).
+        If no date parameter is specified, the server implies the current date. The reply is encoded in JSON.</p>
+
+    <div class="input-group">
+        <div class="input-group-button">
+            <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/api/percentages?date=2018-06-21','_blank');">
+                Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
+            </button>
+            <button class="btn" data-clipboard-target="#api_data_percentages" title="Copy to clipboard">
+                Copy <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
+            </button>
+        </div>
+        <div class="html hljs snippet" id="api_data_percentages">
+            <code>https://cyprus-water.appspot.com/api/percentages?date=2018-06-21</code>
+        </div>
+    </div>
+
+
+    <script>
+        // init clipboard
+        new ClipboardJS('.btn'); // initialize clipboard code for buttons of class 'btn'
+
+        // init water gauge
+        var config = liquidFillGaugeDefaultSettings();
+        config.circleColor = "#7777FF";
+        config.textColor = "#4444FF";
+        config.waveTextColor = "#AAAAFF";
+        config.waveColor = "#4444FF";
+        config.circleThickness = 0.1;
+        config.textVertPosition = 0.5;
+        config.waveAnimateTime = 3000;
+        var gauge = loadLiquidFillGauge("water-gauge", 0, config);
+
+        function loadDamsAverageLevel() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    // set the current dam level
+                    var reply = JSON.parse(this.responseText);
+                    gauge.update(100.0 * reply.totalPercentage);
+                }
+            };
+            xhttp.open("GET", "https://cyprus-water.appspot.com/api/percentages", true);
+            xhttp.send();
+        }
+
+    </script>
+</body>
+
+</html>

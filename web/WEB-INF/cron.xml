@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<cronentries>
+
+    <cron>
+        <url>/sync/grab</url>
+        <description>grabs water data from ministry's server</description>
+        <schedule>every day 1:00</schedule>
+        <timezone>Asia/Nicosia</timezone>
+    </cron>
+
+</cronentries>
