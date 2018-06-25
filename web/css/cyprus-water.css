@@ -21,9 +21,17 @@ body {
 }
 
 .section {
+    margin-top: 2.4em;
     color: #7f0000;
     font-size: 20px;
     font-weight: bold;
+}
+
+.api_call {
+    border: #4444FF7F;
+    border-style: dashed;
+    border-width: 2px;
+    margin-top: 1em;
 }
 
 p {

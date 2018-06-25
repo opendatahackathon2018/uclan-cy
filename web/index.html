@@ -25,7 +25,7 @@
     <p class="answer">This is an open repository of information and functionality related to Cyprus' water reservoirs and their storage. You can learn about dams in Cyprus and their storage presently, and in the past.</p>
 
     <p class="question">Where do you get the data from?</p>
-    <p class="answer">From the website of the Water Development Environment which you can access <a href="http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/reservoir_en/reservoir_en?OpenDocument" target="_blank">here</a>.</p>
+    <p class="answer">From the website of the <a href="http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/reservoir_en/reservoir_en?OpenDocument" target="_blank">Water Development Department</a>.</p>
 
     <p class="question">Can I create an app that uses this data?</p>
     <p class="answer">Yes. You can use the API described below. If you do this, we expect you to follow make fair use of the resource which is provided for free and without any guarantee. We would also appreciate but not require an attribution.</p>
@@ -48,60 +48,70 @@
 
     <p class="section">Application Programming Interface (API)</p>
 
-    <p class="question">/sync/grab</p>
-    <p class="answer">Triggers a <i>grab</i> from the source website (requires authentication and admin rights which you most likely don't have).</p>
+    <div class="api_call">
 
-    <div class="input-group">
-        <div class="input-group-button">
-            <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/sync/grab','_blank');">
-                Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
-            </button>
-            <button class="btn" data-clipboard-target="#api_sync_grab" title="Copy to clipboard">
-                Copy <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
-            </button>
-        </div>
-        <div class="html hljs snippet" id="api_sync_grab">
-            <code>https://cyprus-water.appspot.com/sync/grab</code>
-        </div>
-    </div>
+        <p class="question">/api/date-statistics</p>
+        <p class="answer">Queries the <i>statistics</i> of water reservoirs on a specific date. The query uses the format yyyy-MM-dd
+            (e.g. "?date=2018-06-21" to query the statistics for June 21st, 2018, or if no data exist for this date, then the latest date before the specified one).
+            If no date parameter is specified, the server implies the current date. The reply is encoded in JSON.</p>
 
-
-    <p class="question">/api/date-statistics</p>
-    <p class="answer">Queries the <i>statistics</i> of water reservoirs on a specific date. The query uses the format yyyy-MM-dd
-        (e.g. "?date=2018-06-21" to query the statistics for June 21st, 2018, or if no data exist for this date, then the latest date before the specified one).
-        If no date parameter is specified, the server implies the current date. The reply is encoded in JSON.</p>
-
-    <div class="input-group">
-        <div class="input-group-button">
-            <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/api/date-statistics?date=2018-06-21','_blank');">
-                Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
-            </button>
-            <button class="btn" data-clipboard-target="#api_data_statistics" title="Copy to clipboard">
-                Copy <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
-            </button>
-        </div>
-        <div class="html hljs snippet" id="api_data_statistics">
-            <code>https://cyprus-water.appspot.com/api/date-statistics?date=2018-06-21</code>
+        <div class="input-group">
+            <div class="input-group-button">
+                <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/api/date-statistics?date=2018-06-21','_blank');">
+                    Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
+                </button>
+                <button class="btn" data-clipboard-target="#api_data_statistics" title="Copy to clipboard">
+                    Copy <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
+                </button>
+            </div>
+            <div class="html hljs snippet" id="api_data_statistics">
+                <code>https://cyprus-water.appspot.com/api/date-statistics?date=2018-06-21</code>
+            </div>
         </div>
     </div>
 
 
-    <p class="question">/api/percentages</p>
-    <p class="answer">Queries the storage <i>percentages</i> of the main water reservoirs on a specific date. The query uses the format yyyy-MM-dd
-        (e.g. "?date=2018-06-21" to query the percentages for June 21st, 2018, or if no data exist for this date, then the latest date before the specified one).
-        If no date parameter is specified, the server implies the current date. The reply is encoded in JSON.</p>
+    <div class="api_call">
+        <p class="question">/api/percentages</p>
+        <p class="answer">Queries the storage <i>percentages</i> of the main water reservoirs on a specific date. The query uses the format yyyy-MM-dd
+            (e.g. "?date=2018-06-21" to query the percentages for June 21st, 2018, or if no data exist for this date, then the latest date before the specified one).
+            If no date parameter is specified, the server implies the current date. The reply is encoded in JSON.</p>
 
-    <div class="input-group">
-        <div class="input-group-button">
-            <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/api/percentages?date=2018-06-21','_blank');">
-                Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
-            </button>
-            <button class="btn" data-clipboard-target="#api_data_percentages" title="Copy to clipboard">
-                Copy <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
-            </button>
+        <div class="input-group">
+            <div class="input-group-button">
+                <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/api/percentages?date=2018-06-21','_blank');">
+                    Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
+                </button>
+                <button class="btn" data-clipboard-target="#api_data_percentages" title="Copy to clipboard">
+                    Copy <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
+                </button>
+            </div>
+            <div class="html hljs snippet" id="api_data_percentages">
+                <code>https://cyprus-water.appspot.com/api/percentages?date=2018-06-21</code>
+            </div>
         </div>
-        <div class="html hljs snippet" id="api_data_percentages">
-            <code>https://cyprus-water.appspot.com/api/percentages?date=2018-06-21</code>
+    </div>
+
+
+    <p class="subtitle">The following are Admin-only API calls which you cannot access (and you shouldn't need to).</p>
+
+
+    <div class="api_call">
+        <p class="question">/sync/grab</p>
+        <p class="answer">Triggers a <i>grab</i> from the source website (requires authentication and admin rights which you most likely don't have).</p>
+
+        <div class="input-group">
+            <div class="input-group-button">
+                <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/sync/grab','_blank');">
+                    Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
+                </button>
+                <button class="btn" data-clipboard-target="#api_sync_grab" title="Copy to clipboard">
+                    Copy <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
+                </button>
+            </div>
+            <div class="html hljs snippet" id="api_sync_grab">
+                <code>https://cyprus-water.appspot.com/sync/grab</code>
+            </div>
         </div>
     </div>
 
