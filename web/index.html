@@ -6,9 +6,10 @@
     <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v2.0.0/dist/clipboard.min.js"></script>
     <script src="https://d3js.org/d3.v3.min.js" language="JavaScript"></script>
     <script src="js/liquidFillGauge.js" language="JavaScript"></script>
+    <script src="js/dams.js"></script>
 </head>
 
-<body onload="loadDamsAverageLevel()">
+<body onload="init()">
     <p class="title">Cyprus Water</p>
 
     <p class="subtitle">Welcome to Cyprus Water, an open repository of data and functionality on water reservoires in Cyprus.</p>
@@ -16,7 +17,17 @@
     <div style="margin: 50px;">
         <!--Gauge as per http://bl.ocks.org/brattonc/5e5ce9beee483220e2f6-->
         <svg id="water-gauge" width="100%" height="200"></svg>
-        <p style="text-align: center; color: #4444FF; font-weight: bold;">Percentage of water level across all reservoirs in Cyprus</p>
+        <p style="text-align: center; color: #3333ff; font-weight: bold;">Percentage of water level across all reservoirs in Cyprus</p>
+    </div>
+
+    <div>
+        <canvas id="myCanvas" width="960" height="200" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
+
+        <p>
+            <input id="keepAspectCheckbox" title="Toggle proportional drawing mode" type="checkbox" onclick="drawDamPercentagesWithAspect()" checked />
+            Size dam bars according to capacity
+        </p>
+        <p style="text-align: center; color: #3333ff; font-weight: bold;">Water level in main reservoirs in Cyprus</p>
     </div>
 
     <p class="section">Frequently Asked Questions (FAQ)</p>
@@ -149,26 +160,56 @@
 
         // init water gauge
         var config = liquidFillGaugeDefaultSettings();
-        config.circleColor = "#7777FF";
-        config.textColor = "#4444FF";
-        config.waveTextColor = "#AAAAFF";
-        config.waveColor = "#4444FF";
+        config.circleColor = "#d3d3d3";
+        config.textColor = "#3333FF";
+        config.waveTextColor = "#b5f7ff";
+        config.waveColor = "#b5f7ff";
         config.circleThickness = 0.1;
         config.textVertPosition = 0.5;
         config.waveAnimateTime = 3000;
         var gauge = loadLiquidFillGauge("water-gauge", 0, config);
 
-        function loadDamsAverageLevel() {
+        let damNamesToPercentage = null;
+        let damsArray = null;
+
+        function loadDamsPercentage() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4 && this.status === 200) {
                     // set the current dam level
-                    var reply = JSON.parse(this.responseText);
-                    gauge.update(100.0 * reply.totalPercentage);
+                    damNamesToPercentage = JSON.parse(this.responseText);
+                    gauge.update(100.0 * damNamesToPercentage.totalPercentage);
+                    drawDamPercentagesWithAspect();
+                    loadDamsArray();
                 }
             };
             xhttp.open("GET", "https://cyprus-water.appspot.com/api/percentages", true);
             xhttp.send();
+        }
+
+        function loadDamsArray() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    // set the current dam level
+                    damsArray = JSON.parse(this.responseText);
+                    drawDamPercentagesWithAspect();
+                }
+            };
+            xhttp.open("GET", "https://cyprus-water.appspot.com/api/dams", true);
+            xhttp.send();
+        }
+
+        // Draw dam wih levels
+        function drawDamPercentagesWithAspect() {
+            var c = document.getElementById("myCanvas");
+            if(damsArray != null && damNamesToPercentage != null) {
+                drawDamPercentages(c, damNamesToPercentage, damsArray, keepAspectCheckbox.checked);
+            }
+        }
+
+        function init() {
+            loadDamsPercentage();
         }
 
     </script>
