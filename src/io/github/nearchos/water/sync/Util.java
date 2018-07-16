@@ -9,13 +9,34 @@ import jxl.read.biff.BiffException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Modifier;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Logger;
 
 public class Util {
 
     public static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yy");
+
+    private static final Logger log = Logger.getLogger("cyprus-water");
+
+    static Workbook doRequestXls(final String url) throws IOException {
+        final URL requestUrl = new URL(url);
+        final HttpURLConnection httpURLConnection = (HttpURLConnection) requestUrl.openConnection();
+        httpURLConnection.setRequestMethod("GET");
+        httpURLConnection.setRequestProperty("Content-Type", "application/vnd.ms-excel");
+
+        int responseCode = httpURLConnection.getResponseCode();
+        if(responseCode != 200) {
+            log.severe("RequestServlet @ '" + url + "' produced response code: " + responseCode);
+            throw new IOException("HTTP (XML) response code: " + responseCode);
+        }
+
+        return Util.getWorkbook(httpURLConnection.getInputStream());
+    }
 
     private static DayStatistics getDayStatistics(final InputStream inputStream) throws IOException {
         final Workbook workbook = getWorkbook(inputStream);

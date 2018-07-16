@@ -17,15 +17,15 @@
     <div style="margin: 50px;">
         <!--Gauge as per http://bl.ocks.org/brattonc/5e5ce9beee483220e2f6-->
         <svg id="water-gauge" width="100%" height="200"></svg>
-        <p style="text-align: center; color: #3333ff; font-weight: bold;">Percentage of water level across all reservoirs in Cyprus</p>
+        <p style="text-align: center; color: #3333ff; font-weight: bold;">Water reservoirs across all dams in Cyprus</p>
     </div>
 
     <div>
         <canvas id="myCanvas" width="960" height="200" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
 
         <p>
-            <input id="keepAspectCheckbox" title="Toggle proportional drawing mode" type="checkbox" onclick="drawDamPercentagesWithAspect()" checked />
-            Size dam bars according to capacity
+            <input id="keepAspectCheckbox" title="Toggle proportional drawing mode" type="checkbox" onclick="drawDamPercentagesWithAspect()" />
+            Size bars according to dam capacity
         </p>
         <p style="text-align: center; color: #3333ff; font-weight: bold;">Water level in main reservoirs in Cyprus</p>
     </div>
@@ -125,6 +125,28 @@
             </div>
             <div class="html hljs snippet" id="api_data_percentages">
                 <code>https://cyprus-water.appspot.com/api/percentages?date=2018-06-21</code>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="api_call">
+        <p class="question">/api/timeseries</p>
+        <p class="answer">Queries the <i>timeseries</i> of the water level through time. The query returns a
+            Timeseries object containing basic info of the dams, plus an ordered array of dates to percentagesThe reply is encoded in JSON.</p>
+
+        <div class="input-group">
+            <div class="input-group-button">
+                <span class="link-to-github">Returns an instance of <code><a href="https://github.com/nearchos/cyprus-water/blob/master/src/io/github/nearchos/water/data/Timeseries.java" target="_blank">Timeseries</a></code></span>
+                <button title="Try the URL" onclick="window.open('https://cyprus-water.appspot.com/api/timeseries','_blank');">
+                    Try it <img class="clippy" width="13" src="images/icons8-external-link.svg" alt="Try the URL">
+                </button>
+                <button class="btn" data-clipboard-target="#api_data_timeseries" title="Copy to clipboard">
+                    Copy <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
+                </button>
+            </div>
+            <div class="html hljs snippet" id="api_data_timeseries">
+                <code>https://cyprus-water.appspot.com/api/timeseries</code>
             </div>
         </div>
     </div>

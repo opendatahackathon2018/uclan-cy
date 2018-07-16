@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
 
+    <!--Grab servlet-->
     <servlet>
         <servlet-name>GrabServlet</servlet-name>
         <servlet-class>io.github.nearchos.water.sync.GrabServlet</servlet-class>
@@ -12,7 +13,9 @@
         <servlet-name>GrabServlet</servlet-name>
         <url-pattern>/sync/grab</url-pattern>
     </servlet-mapping>
+    <!--End of Grab servlet-->
 
+    <!--API calls-->
     <servlet>
         <servlet-name>GetDayStatisticsServlet</servlet-name>
         <servlet-class>io.github.nearchos.water.api.GetDayStatisticsServlet</servlet-class>
@@ -42,11 +45,32 @@
         <url-pattern>/api/percentages</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>GetTimeseriesServlet</servlet-name>
+        <servlet-class>io.github.nearchos.water.api.GetTimeseriesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetTimeseriesServlet</servlet-name>
+        <url-pattern>/api/timeseries</url-pattern>
+    </servlet-mapping>
+    <!--End of API calls-->
+
+    <!--Pages-->
+    <servlet>
+        <servlet-name>TimeseriesJSP</servlet-name>
+        <jsp-file>timeseries.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TimeseriesJSP</servlet-name>
+        <url-pattern>/timeseries</url-pattern>
+    </servlet-mapping>
+    <!--End of Pages-->
+
     <!--Security constraints-->
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>api</web-resource-name>
-            <url-pattern>/api/*</url-pattern>
+            <web-resource-name>everything</web-resource-name>
+            <url-pattern>/*</url-pattern>
         </web-resource-collection>
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>

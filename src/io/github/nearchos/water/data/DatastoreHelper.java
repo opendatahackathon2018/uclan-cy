@@ -44,6 +44,26 @@ public class DatastoreHelper {
         }
     }
 
+    public static Vector<DayStatistics> getAllDayStatistics() {
+
+        final Vector<DayStatistics> allDayStatistics = new Vector<>();
+
+        final Query query = new Query(KIND_DAY_STATISTICS)
+                .addSort(PROPERTY_DAY_STATISTICS_DAY, Query.SortDirection.ASCENDING);
+
+        final PreparedQuery preparedQuery = datastoreService.prepare(query);
+
+        log.info("looking up all dayStatistics");
+
+        // assert exactly one (or none) is found
+        for (final Entity dayStatisticsEntity : preparedQuery.asIterable()) {
+            final String dayStatisticsJson = (String) dayStatisticsEntity.getProperty(PROPERTY_DAY_STATISTICS_JSON);
+            allDayStatistics.add(gson.fromJson(dayStatisticsJson, DayStatistics.class));
+        }
+
+        return allDayStatistics;
+    }
+
     public static void addDayStatistics(final DayStatistics dayStatistics) {
 
         final String date = dayStatistics.getDateAsString();

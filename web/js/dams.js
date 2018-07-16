@@ -33,11 +33,14 @@ function drawDamPercentages(canvas, damNamesToPercentage, damsArray, keepAspect)
         ctx.fillRect(x, height - waterHeight, damWidth, waterHeight);
         x = x + damWidth;
 
+        let damPercentage = (100.0 * damNamesToPercentage.damNamesToPercentage[damsArray[i].nameEn]).toFixed(1);
+        let damCapacity = (damsArray[i].capacity/1000000).toFixed(1);
+
         ctx.save();
         ctx.rotate(-Math.PI/2);
-        ctx.font = "bold 11px verdana";
+        ctx.font = "bold 9px verdana";
         ctx.fillStyle="#3333ff";
-        ctx.fillText(damsArray[i].nameEn + " (" + (damsArray[i].capacity/1000000).toFixed(1) + " MCM)", -height * 0.95, x-10);
+        ctx.fillText(damsArray[i].nameEn + " (" + damPercentage + "% of " + damCapacity + " MCM)", -height * 0.95, x-10);
         ctx.restore();
     }
     let totalPercentage = totalQuantity / totalCapacity;

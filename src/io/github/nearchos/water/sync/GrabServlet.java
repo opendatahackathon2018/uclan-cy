@@ -9,15 +9,14 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.logging.Logger;
+
+import static io.github.nearchos.water.sync.Util.doRequestXls;
 
 public class GrabServlet extends HttpServlet {
 
@@ -56,19 +55,4 @@ public class GrabServlet extends HttpServlet {
     }
 
     private static final String WDD_ROOT = "http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/reservoir_en/reservoir_en?OpenDocument";
-
-    private Workbook doRequestXls(final String url) throws IOException {
-        final URL requestUrl = new URL(url);
-        final HttpURLConnection httpURLConnection = (HttpURLConnection) requestUrl.openConnection();
-        httpURLConnection.setRequestMethod("GET");
-        httpURLConnection.setRequestProperty("Content-Type", "application/vnd.ms-excel");
-
-        int responseCode = httpURLConnection.getResponseCode();
-        if(responseCode != 200) {
-            log.severe("RequestServlet @ '" + url + "' produced response code: " + responseCode);
-            throw new IOException("HTTP (XML) response code: " + responseCode);
-        }
-
-        return Util.getWorkbook(httpURLConnection.getInputStream());
-    }
 }
