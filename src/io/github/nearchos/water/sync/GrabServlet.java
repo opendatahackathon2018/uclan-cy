@@ -49,8 +49,10 @@ public class GrabServlet extends HttpServlet {
         if(latestDayStatistics == null || !latestDayStatistics.getDateAsString().equals(dayStatistics.getDateAsString())) {
             DatastoreHelper.addDayStatistics(dayStatistics);
             printWriter.println("Added dayStatistics for: " + date);
+            log("Added dayStatistics for: " + date + " --> " + dayStatistics);
         } else {
             printWriter.println("Skipped as dayStatistics already in datastore for: " + date);
+            log("Skipped as dayStatistics already in datastore for: " + date);
         }
     }
 

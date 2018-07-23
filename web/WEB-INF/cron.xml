@@ -4,8 +4,15 @@
 
     <cron>
         <url>/sync/grab</url>
-        <description>grabs water data from ministry's server</description>
+        <description>grabs water data from ministry's server (first attempt)</description>
         <schedule>every day 1:00</schedule>
+        <timezone>Asia/Nicosia</timezone>
+    </cron>
+
+    <cron>
+        <url>/sync/grab</url>
+        <description>grabs water data from ministry's server (second attempt)</description>
+        <schedule>every day 13:00</schedule>
         <timezone>Asia/Nicosia</timezone>
     </cron>
 
