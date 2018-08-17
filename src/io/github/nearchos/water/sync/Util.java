@@ -1,25 +1,34 @@
+/*
+ * Copyright (c) 2018.
+ *
+ * THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR
+ *  "LICENSE"). THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER
+ *   THAN AS AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+ *
+ * BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND AGREE TO BE BOUND BY THE TERMS OF THIS
+ *  LICENSE. TO THE EXTENT THIS LICENSE MAY BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS
+ *   CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
+ *
+ * The complete license is available at https://creativecommons.org/licenses/by/3.0/legalcode
+ */
+
 package io.github.nearchos.water.sync;
 
 import io.github.nearchos.water.data.Data;
 import io.github.nearchos.water.data.DayStatistics;
-import jxl.Sheet;
-import jxl.Workbook;
-import jxl.WorkbookSettings;
-import jxl.read.biff.BiffException;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Modifier;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Logger;
 
 public class Util {
-
-    public static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yy");
 
     private static final Logger log = Logger.getLogger("cyprus-water");
 
@@ -35,7 +44,7 @@ public class Util {
             throw new IOException("HTTP (XML) response code: " + responseCode);
         }
 
-        return Util.getWorkbook(httpURLConnection.getInputStream());
+        return getWorkbook(httpURLConnection.getInputStream());
     }
 
     private static DayStatistics getDayStatistics(final InputStream inputStream) throws IOException {
@@ -44,17 +53,10 @@ public class Util {
     }
 
     static Workbook getWorkbook(final InputStream inputStream) throws IOException {
-
-        final WorkbookSettings workbookSettings = new WorkbookSettings();
-        try {
-            return Workbook.getWorkbook(inputStream, workbookSettings);
-        } catch (BiffException biffe) {
-            throw new IOException(biffe);
-        }
+        return new XSSFWorkbook(inputStream);
     }
 
     static DayStatistics getDayStatistics(final Workbook workbook) throws IOException {
-
         Date date;
         Map<String,Double> mapStorage = new HashMap<>();
         Map<String,Double> mapInflow = new HashMap<>();
@@ -62,28 +64,24 @@ public class Util {
         final Vector<String> damNamesEn = new Vector<>(Arrays.asList(Data.DAM_NAMES_EN));
 
         try {
-            final Sheet sheet = workbook.getSheet(0);
-            final String dateS = sheet.getCell(11, 9).getContents();
-            date = DATE_FORMAT.parse(dateS);
-            for(int j = 0; j < sheet.getRows(); j++) {
-                String damName = sheet.getCell(1, j).getContents().trim();
-                {
-                    String damStorageS = sheet.getCell(7, j).getContents();
+            final Sheet sheet = workbook.getSheetAt(0);
+            date = sheet.getRow(9).getCell(11).getDateCellValue();
+            for(int j = 16; j < 41; j++) {
+                String damName = sheet.getRow(j).getCell(1).getStringCellValue().trim(); {
+                    double damStorage = sheet.getRow(j).getCell(7).getNumericCellValue();
                     if(!damName.isEmpty() && damNamesEn.contains(damName)) {
-                        final double damStorage = Double.parseDouble(damStorageS);
                         mapStorage.put(damName, damStorage);
                     }
                 }
                 {
-                    String damInflowS = sheet.getCell(5, j).getContents();
+                    double damInflow = sheet.getRow(j).getCell(5).getNumericCellValue();
                     if(!damName.isEmpty() && damNamesEn.contains(damName)) {
-                        final double damInflow = Double.parseDouble(damInflowS);
                         mapInflow.put(damName, damInflow);
                     }
                 }
             }
-        } catch (ParseException pe) {
-            throw new IOException(pe);
+        } catch (RuntimeException re) {
+            throw new IOException(re);
         }
 
         return new DayStatistics(date, mapStorage, mapInflow);

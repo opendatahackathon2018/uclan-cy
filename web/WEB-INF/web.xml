@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR
+  ~  "LICENSE"). THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER
+  ~   THAN AS AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+  ~
+  ~ BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND AGREE TO BE BOUND BY THE TERMS OF THIS
+  ~  LICENSE. TO THE EXTENT THIS LICENSE MAY BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS
+  ~   CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
+  ~
+  ~ The complete license is available at https://creativecommons.org/licenses/by/3.0/legalcode
+  -->
+
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
@@ -58,11 +72,11 @@
     <!--Pages-->
     <servlet>
         <servlet-name>TimeseriesJSP</servlet-name>
-        <jsp-file>timeseries.jsp</jsp-file>
+        <jsp-file>/graphs/timeseries.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>TimeseriesJSP</servlet-name>
-        <url-pattern>/timeseries</url-pattern>
+        <url-pattern>/graphs/timeseries</url-pattern>
     </servlet-mapping>
     <!--End of Pages-->
 

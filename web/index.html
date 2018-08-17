@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+<!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR
+  ~  "LICENSE"). THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER
+  ~   THAN AS AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+  ~
+  ~ BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND AGREE TO BE BOUND BY THE TERMS OF THIS
+  ~  LICENSE. TO THE EXTENT THIS LICENSE MAY BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS
+  ~   CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
+  ~
+  ~ The complete license is available at https://creativecommons.org/licenses/by/3.0/legalcode
+  -->
+
 <html lang="en">
 <head>
     <title>Cyprus Water - Open Data and API</title>
@@ -10,6 +24,19 @@
 </head>
 
 <body onload="init()">
+
+    <nav>
+        Quick link to
+        <a href="#home">Home</a> |
+        <a href="#faq">FAQ</a> |
+        <a href="#api">API</a> |
+        <a href="#graphs">Graphs</a> |
+        <a href="#about">About</a>
+    </nav>
+
+    <!--#home-->
+    <a name="home"></a>
+
     <p class="title">Cyprus Water</p>
 
     <p class="subtitle">Welcome to Cyprus Water, an open repository of data and functionality on water reservoires in Cyprus.</p>
@@ -17,7 +44,7 @@
     <div style="margin: 50px;">
         <!--Gauge as per http://bl.ocks.org/brattonc/5e5ce9beee483220e2f6-->
         <svg id="water-gauge" width="100%" height="200"></svg>
-        <p style="text-align: center; color: #3333ff; font-weight: bold;">Water reservoirs across all dams in Cyprus</p>
+        <p style="text-align: center; color: #3333ff; font-weight: bold;">Water level across all reservoirs in Cyprus</p>
     </div>
 
     <div>
@@ -30,6 +57,9 @@
         <p style="text-align: center; color: #3333ff; font-weight: bold;">Water level in main reservoirs in Cyprus</p>
     </div>
 
+    <!--#faq-->
+    <a name="faq"></a>
+
     <p class="section">Frequently Asked Questions (FAQ)</p>
 
     <p class="question">What is this website?</p>
@@ -39,9 +69,9 @@
     <p class="answer">From the website of the <a href="http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/reservoir_en/reservoir_en?OpenDocument" target="_blank">Water Development Department</a>.</p>
 
     <p class="question">Can I create an app that uses this data?</p>
-    <p class="answer">Yes. You can use the API described below. If you do this, we expect you to follow make fair use of the resource which is provided for free and without any guarantee. We would also appreciate but not require an attribution.</p>
+    <p class="answer">Yes. You can use the API described below. If you do this, we expect you to make fair use of the resource which is provided for free and without any guarantee. We would also appreciate but not require an acknowledgement/attribution.</p>
 
-    <p class="question">How do I attribute this project, its data and its services?</p>
+    <p class="question">How do I acknowledge this project, its data and its services?</p>
     <p class="answer">Use the following text</p>
     <blockquote>Use of <a href="http://cyprus-water.appspot.com">cyprus-water</a> data and functionality is licensed under <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a></blockquote>
     <p class="answer">which you could produce with this sample HTML code</p>
@@ -56,6 +86,9 @@
             <code>Use of &lt;a href=&quot;http://cyprus-water.appspot.com&quot;&gt;cyprus-water&lt;/a&gt; data and functionality is licensed under &lt;a href=&quot;https://creativecommons.org/licenses/by/2.0/&quot; target=&quot;_blank&quot;&gt;CC BY 2.0&lt;/a&gt;</code>
         </div>
     </div>
+
+    <!--#api-->
+    <a name="api"></a>
 
     <p class="section">Application Programming Interface (API)</p>
 
@@ -154,7 +187,6 @@
 
     <p class="subtitle">The following are Admin-only API calls which you cannot access (and you shouldn't need to).</p>
 
-
     <div class="api_call">
         <p class="question">/sync/grab</p>
         <p class="answer">Triggers a <i>grab</i> from the source website (requires authentication and admin rights which you most likely don't have). Returns a message encoded in JSON.</p>
@@ -175,6 +207,40 @@
         </div>
     </div>
 
+    <!--#graphs-->
+    <a name="graphs"></a>
+
+    <p class="section">Graphs</p>
+
+    <section>
+        <article>
+            <p>Timeseries graph, showing the water level across the main reservoirs over time.</p>
+            <p><a href="/graphs/timeseries" target="_blank">/graphs/timeseries</a></p>
+        </article>
+    </section>
+
+    <!--#about-->
+    <a name="about"></a>
+
+    <section>
+
+        <p class="section">About</p>
+
+        <article>
+            <p>Created by <a href="http://nearchos.github.io" target="_blank">Nearchos Paspallis</a>.</p>
+            <figure>
+                <a href="http://inspirecenter.org" target="_blank"><img src="images/inspire.png" title="Inspire Research Center" alt="Inspire Research Center"></a>
+            </figure>
+            <figure>
+                <a href="http://uclancyprus.ac.cy" target="_blank"><img src="images/uclan.png" title="UCLan Cyprus" alt="UCLan Cyprus"></a>
+            </figure>
+        </article>
+
+    </section>
+
+    <footer>
+        <p><a href="http://cyprus-water.appspot.com">cyprus-water.appspot.com</a> &copy; 2018</p>
+    </footer>
 
     <script>
         // init clipboard
