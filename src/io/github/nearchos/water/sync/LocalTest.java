@@ -21,14 +21,16 @@ import java.io.IOException;
 public class LocalTest {
 
     public static final String TEST_URL_2018_08_16 = "http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/all/BE34CE00F9323F0EC2257DD3003B2AEF/$file/16-AUG-2018-UK.xlsx?openelement";
+    public static final String TEST_URL_2018_08_31 = "http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/all/BE34CE00F9323F0EC2257DD3003B2AEF/$file/31-8-2018UK.xls?openelement";
 
     public static void main(String[] args) {
-        testPOI_XLSX();
+//        testPOI_XLSX(TEST_URL_2018_08_16);
+        testPOI_XLSX(TEST_URL_2018_08_31);
     }
 
-    private static void testPOI_XLSX() {
+    private static void testPOI_XLSX(final String url) {
         try {
-            final org.apache.poi.ss.usermodel.Workbook workbook = Util.doRequestXls(TEST_URL_2018_08_16);
+            final org.apache.poi.ss.usermodel.Workbook workbook = Util.doRequestXls(url);
             System.out.println("workbook: " + workbook);
             final DayStatistics dayStatistics = Util.getDayStatistics(workbook);
             System.out.println("dayStatistics:" + dayStatistics);

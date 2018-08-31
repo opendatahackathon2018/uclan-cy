@@ -16,6 +16,8 @@ package io.github.nearchos.water.sync;
 
 import io.github.nearchos.water.data.Data;
 import io.github.nearchos.water.data.DayStatistics;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.exceptions.OLE2NotOfficeXmlFileException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -24,7 +26,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -32,7 +33,17 @@ public class Util {
 
     private static final Logger log = Logger.getLogger("cyprus-water");
 
+    private enum FileFormat { HSSF, XSSF };
+
     static Workbook doRequestXls(final String url) throws IOException {
+        try {
+            return doRequestXls(url, FileFormat.XSSF);
+        } catch (OLE2NotOfficeXmlFileException e) {
+            return doRequestXls(url, FileFormat.HSSF);
+        }
+    }
+
+    private static Workbook doRequestXls(final String url, final FileFormat fileFormat) throws IOException {
         final URL requestUrl = new URL(url);
         final HttpURLConnection httpURLConnection = (HttpURLConnection) requestUrl.openConnection();
         httpURLConnection.setRequestMethod("GET");
@@ -44,16 +55,23 @@ public class Util {
             throw new IOException("HTTP (XML) response code: " + responseCode);
         }
 
-        return getWorkbook(httpURLConnection.getInputStream());
+        return getWorkbook(httpURLConnection.getInputStream(), fileFormat);
     }
 
-    private static DayStatistics getDayStatistics(final InputStream inputStream) throws IOException {
-        final Workbook workbook = getWorkbook(inputStream);
+    private static DayStatistics getDayStatistics(final InputStream inputStream, final FileFormat fileFormat) throws IOException {
+        final Workbook workbook = getWorkbook(inputStream, fileFormat);
         return getDayStatistics(workbook);
     }
 
-    static Workbook getWorkbook(final InputStream inputStream) throws IOException {
-        return new XSSFWorkbook(inputStream);
+    static Workbook getWorkbook(final InputStream inputStream, final FileFormat fileFormat) throws IOException {
+        switch (fileFormat) {
+            case HSSF:
+                return new HSSFWorkbook(inputStream);
+            case XSSF:
+                return new XSSFWorkbook(inputStream);
+            default:
+                throw new RuntimeException("Unknown file format: " + fileFormat);
+        }
     }
 
     static DayStatistics getDayStatistics(final Workbook workbook) throws IOException {

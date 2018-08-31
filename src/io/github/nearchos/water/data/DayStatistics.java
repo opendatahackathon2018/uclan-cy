@@ -63,4 +63,14 @@ public class DayStatistics implements Serializable {
     public Double getInflowInMCM(final String damName) {
         return inflowInMCM.get(damName);
     }
+
+    @Override
+    public String toString() {
+        return "DayStatistics{" +
+                "timestamp=" + timestamp +
+                ", date=" + date +
+                ", storageInMCM=" + storageInMCM +
+                ", inflowInMCM=" + inflowInMCM +
+                '}';
+    }
 }
