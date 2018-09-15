@@ -1,4 +1,11 @@
 class Question {
+    get recommendedMeasureUnit() {
+        return this._recommendedMeasureUnit;
+    }
+
+    set recommendedMeasureUnit(value) {
+        this._recommendedMeasureUnit = value;
+    }
 
     get question() {
         return this._question;
@@ -7,8 +14,18 @@ class Question {
     get answers() {
         return this._answers;
     }
-    constructor(question, answers) {
 
+    get source() {
+        return this._source;
+    }
+
+    set source(value) {
+        this._source = value;
+    }
+
+    constructor(question, answers, source, measureUnit) {
+        this._recommendedMeasureUnit = measureUnit;
+        this._source = source;
         this._question = question;
         this._answers = answers;
     }
@@ -52,14 +69,14 @@ class Quiz {
      */
     answerQuestion(answer) {
         //If all questions have been answered:
-        if (this._currentQuestionIndex >= questions.length) {
+        if (this._currentQuestionIndex >= this._questions.length) {
             return -1;
         }
         //If there are questions to be answered:
         else {
 
             //Get the next question:
-            var currentQuestion = questions[this._currentQuestionIndex];
+            var currentQuestion = this._questions[this._currentQuestionIndex];
 
             //Find the correct answer:
             var correctAnswer;
@@ -72,10 +89,12 @@ class Quiz {
 
             //Compare the user's answer with the correct answer:
             var result;
-            if (correctAnswer.answer === answer) {
+            console.log("USER ANSWER -> " + answer);
+            console.log("CORRECT ANSWER -> " + correctAnswer.answer);
+            if (correctAnswer.answer == answer) {
                 result = true;
             }
-            result = false;
+            else result = false;
             return result;
         }
     }
