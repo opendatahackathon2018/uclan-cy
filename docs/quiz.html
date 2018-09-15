@@ -7,7 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="css/cyprus_dams.css" rel="stylesheet" type="text/css"/>
     <script src="js/APIUtils.js"></script>
-    <script src="js/ConversionUnit.js"></script>
+    <script src="js/MeasurementUnit.js"></script>
     <script src="js/Cookies.js"></script>
     <script src="js/QuizClasses.js"></script>
     <script src="js/GetQuestions.js"></script>
@@ -98,6 +98,7 @@
     var measurementsList = document.getElementById("measurementsList");
 
     function submitAnswer() {
+
         var question = QUIZ.getNextQuestion();
         var answerElements = document.getElementsByClassName("answer");
         var userAnswerElement;
@@ -109,7 +110,7 @@
         }
         var answerResult = QUIZ.answerQuestion(userAnswerElement.value);
         if (answerResult === -1) { //The quiz is finished.
-            alert("Finished!"); //TODO Replace.
+            window.location = "index.html";
         }
         else {
             if (answerResult === true) { //Answer is correct.
@@ -120,6 +121,13 @@
             }
             displayNextQuestion(QUIZ);
         }
+
+        //Uncheck the selections:
+        document.getElementById("answerA").checked = false;
+        document.getElementById("answerB").checked = false;
+        document.getElementById("answerC").checked = false;
+        document.getElementById("answerD").checked = false;
+
     }
 
     function enableSubmitBtn() {
@@ -133,7 +141,7 @@
             if (this.readyState === 4 && this.status === 200) {
                 var jsonObject = JSON.parse(this.responseText);
                 for (var i = 0; i < jsonObject.length; i++) {
-                    conversionRates.push(new ConversionUnit(jsonObject[i].id, jsonObject[i].nameEl, jsonObject[i].nameEn, jsonObject[i].imageUrl, jsonObject[i].ratio));
+                    conversionRates.push(new MeasurementUnit(jsonObject[i].id, jsonObject[i].nameEl, jsonObject[i].nameEn, jsonObject[i].imageUrl, jsonObject[i].ratio));
                     if (jsonObject[i].nameEn === getCookie(MEASURE_TYPE_COOKIE)) {
                         selectedConversionRateIndex = i;
                     }
