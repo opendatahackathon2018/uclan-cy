@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>What do you see?</title>
+        <script src="js/Cookies.js"></script>
+    </head>
+
+    <body>
+        <div style="text-align: center;">
+            <p>What do you see?</p>
+            <img src="images/glass.png" />
+
+            <form id="glassOptionForm">
+                <input type="button" value="Half Empty" id="halfEmpty" onclick="setGlassOption(false);"/>
+                <input type="button" value="Half Full" id="halfFull" onclick="setGlassOption(true);"/>
+            </form>
+        </div>
+    </body>
+
+    <script>
+        /**
+         * Sets a cookie with the specified option.
+         * @param option should receive a Boolean.
+         */
+        function setGlassOption(option) {
+            var cookieValue;
+            if (option) cookieValue = HALF_FULL;
+            else cookieValue = HALF_EMPTY;
+            setCookie(GLASS_OPTION_COOKIE, cookieValue);
+            console.log(getCookie(GLASS_OPTION_COOKIE)); //TODO REMOVE
+            document.location = "cyprus_dams.html";
+        }
+    </script>
+
+</html>
