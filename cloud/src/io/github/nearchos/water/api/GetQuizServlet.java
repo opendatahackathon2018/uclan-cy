@@ -2,6 +2,7 @@ package io.github.nearchos.water.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import io.github.nearchos.water.data.Mood;
 import io.github.nearchos.water.data.Quiz;
 
 import javax.servlet.ServletException;
@@ -24,6 +25,9 @@ public class GetQuizServlet extends HttpServlet {
         response.setContentType("application/json; charset=utf-8");
         response.setHeader("Access-Control-Allow-Origin", "*");
 
+        final Mood mood = request.getParameter("halffull") != null ? Mood.halffull : Mood.halfempty;
+
+        // todo pick file from mood
         final Quiz.Question [] allQuestions = gson.fromJson(Quiz.ALL_QUESTIONS_AS_JSON, Quiz.Question[].class);
         final Vector<Quiz.Question> allQuestionsList = new Vector<>(Arrays.asList(allQuestions));
 
@@ -33,7 +37,7 @@ public class GetQuizServlet extends HttpServlet {
             allQuestionsList.remove(0);
         }
 
-        final String reply = gson.toJson(new Quiz(allQuestionsList));
+        final String reply = gson.toJson(new Quiz(mood, allQuestionsList));
         response.getWriter().println(reply);
     }
 }

@@ -58,7 +58,7 @@ public class MeasureUnit implements Serializable {
             new MeasureUnit("soupSpoon", "Κουταλάκι Σούπας", "Soup Spoon", "/images/units/soupspoon.png", .000015d),
             new MeasureUnit("cup", "Φλυτζάνι", "Cup", "/images/units/coffee-cup.png", .000284d),
             new MeasureUnit("liter", "Λίτρο", "Liter", "/images/units/fresh-milk-box.png", 0.001d),
-            new MeasureUnit("cubicMeter", "Κυβικό Μέτρο", "Cubic Meter", "/images/units/cube.png", 1d),
+            new MeasureUnit("cubicMeter", "Κυβικό Μέτρο", "Cubic Meter", "/images/units/cube_m.png", 1d),
             new MeasureUnit("elephant", "Ελέφαντας", "Elephant", "/images/units/elephant.png", 6d),
             new MeasureUnit("container", "Κοντέϊνερ 20 Ποδών", "20 Feet Container", "/images/units/container.png", 38.267525764d),
             new MeasureUnit("pool", "Πισίνα Ολυμπιακών Διαστάσεων", "Olympic Size Pool", "/images/units/pool.png", 4687.5d),

@@ -7,14 +7,20 @@ import java.util.List;
 
 public class Quiz implements Serializable {
 
+    private Mood mood;
     private List<Question> questions;
 
-    Quiz(Question[] questions) {
-        this(Arrays.asList(questions));
+    Quiz(Mood mood, Question[] questions) {
+        this(mood, Arrays.asList(questions));
     }
 
-    public Quiz(List<Question> questions) {
+    public Quiz(Mood mood, List<Question> questions) {
+        this.mood = mood;
         this.questions = questions;
+    }
+
+    public Mood getMood() {
+        return mood;
     }
 
     public List<Question> getQuestions() {
