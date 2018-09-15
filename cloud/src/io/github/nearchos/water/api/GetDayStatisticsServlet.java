@@ -38,8 +38,8 @@ public class GetDayStatisticsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        response.setContentType("application/json");
-        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json; charset=utf-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
 
         try {
             // unless a "?date=dd-MM-yy" parameter is specified, use current date

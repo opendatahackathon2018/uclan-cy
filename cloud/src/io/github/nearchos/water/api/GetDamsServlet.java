@@ -37,8 +37,8 @@ public class GetDamsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        response.setContentType("application/json");
-        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json; charset=utf-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
 
         if(memcacheService.contains(MEM_CACHE_KEY_DAMS)) {
             final String damsJson = (String) memcacheService.get(MEM_CACHE_KEY_DAMS);

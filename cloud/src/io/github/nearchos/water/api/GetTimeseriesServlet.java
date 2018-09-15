@@ -35,8 +35,8 @@ public class GetTimeseriesServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response.setContentType("application/json");
-        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json; charset=utf-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
 
         // first check if in memcache
         final String memcacheKey = "timeseries-" + DayStatistics.SIMPLE_DATE_FORMAT.format(new Date());

@@ -67,6 +67,16 @@
         <servlet-name>GetTimeseriesServlet</servlet-name>
         <url-pattern>/api/timeseries</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetMeasureUnitsServlet</servlet-name>
+        <servlet-class>io.github.nearchos.water.api.GetMeasureUnitsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetMeasureUnitsServlet</servlet-name>
+        <url-pattern>/api/measure-units</url-pattern>
+    </servlet-mapping>
+
     <!--End of API calls-->
 
     <!--Pages-->
