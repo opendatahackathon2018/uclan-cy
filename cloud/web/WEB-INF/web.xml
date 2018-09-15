@@ -94,6 +94,24 @@
         <servlet-name>GetHistoricInflowServlet</servlet-name>
         <url-pattern>/api/historic-inflow</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PostScoreServlet</servlet-name>
+        <servlet-class>io.github.nearchos.water.api.PostScoreServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PostScoreServlet</servlet-name>
+        <url-pattern>/api/submit-score</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetLeaderboardServlet</servlet-name>
+        <servlet-class>io.github.nearchos.water.api.GetLeaderboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetLeaderboardServlet</servlet-name>
+        <url-pattern>/api/leaderboard</url-pattern>
+    </servlet-mapping>
     <!--End of API calls-->
 
     <!--Pages-->

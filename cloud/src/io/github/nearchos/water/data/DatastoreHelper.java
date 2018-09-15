@@ -20,8 +20,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.github.nearchos.water.api.GetDayStatisticsServlet;
 
-import java.util.Iterator;
-import java.util.Vector;
+import java.util.*;
 import java.util.logging.Logger;
 
 public class DatastoreHelper {
@@ -31,6 +30,10 @@ public class DatastoreHelper {
     public static final String KIND_DAY_STATISTICS = "day-statistics";
     public static final String PROPERTY_DAY_STATISTICS_DAY = "day-statistics-day";
     public static final String PROPERTY_DAY_STATISTICS_JSON = "day-statistics-json";
+    public static final String KIND_SCORE = "score";
+    public static final String PROPERTY_SCORE_NICKNAME = "score-nickname";
+    public static final String PROPERTY_SCORE_SCORE = "score-score";
+    public static final String PROPERTY_SCORE_DATE = "score-date";
 
     private static final DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
     private static final Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
@@ -95,5 +98,34 @@ public class DatastoreHelper {
     public static Vector<Dam> getDams() {
         // for now just return the fixed set, i.e. skip the datastore
         return Data.getDams();
+    }
+
+    public static void addScore(final Score score) {
+        final Entity scoreEntity = new Entity(KIND_SCORE);
+        scoreEntity.setProperty(PROPERTY_SCORE_NICKNAME, score.getNickname());
+        scoreEntity.setProperty(PROPERTY_SCORE_SCORE, score.getScore());
+        scoreEntity.setProperty(PROPERTY_SCORE_DATE, score.getDate());
+        datastoreService.put(scoreEntity);
+    }
+
+    public static Vector<Score> getAllScores(final boolean sorted) {
+        final Vector<Score> allScores = new Vector<>();
+
+        final Query query = new Query(KIND_SCORE);
+
+        final PreparedQuery preparedQuery = datastoreService.prepare(query);
+
+        log.info("looking up all scores");
+
+        for (final Entity scoreEntity : preparedQuery.asIterable()) {
+            final String nickname = (String) scoreEntity.getProperty(PROPERTY_SCORE_NICKNAME);
+            final int score = (Integer) scoreEntity.getProperty(PROPERTY_SCORE_SCORE);
+            final Date date = (Date) scoreEntity.getProperty(PROPERTY_SCORE_DATE);
+            allScores.add(new Score(nickname, score, date));
+        }
+
+        if(sorted) allScores.sort(Score::compareTo);
+
+        return allScores;
     }
 }
