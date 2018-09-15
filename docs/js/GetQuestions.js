@@ -11,6 +11,8 @@ function getQuestions() {
             for (var i = 0; i < questionsObject.length; i++) {
                 //console.log(questionsObject[i].question);
                 var body = questionsObject[i].question;
+                var recommendedUnit = questionsObject[i].recommendedMeasureUnit;
+                var source = questionsObject[i].source;
 
                 var answersObject = questionsObject[i].answers;
                 var ANSWERS = [];
@@ -19,7 +21,7 @@ function getQuestions() {
                     //console.log(answersObject[j].answer);
                     ANSWERS.push(new Answer(answersObject[j].answer, answersObject[j].correct));
                 }
-                QUESTIONS.push(new Question(body, ANSWERS));
+                QUESTIONS.push(new Question(body, ANSWERS, source, recommendedUnit));
             }
 
             //If no questions found, show error message:
@@ -36,6 +38,8 @@ function getQuestions() {
             //Set the HTML elements:
             document.getElementById("questionNumber").innerHTML = QUIZ._currentQuestionIndex + 1;
             document.getElementById("questionContent").innerHTML = nextQuestion.question;
+            document.getElementById("questionSource").innerHTML = "<a href='" + nextQuestion.source + "'>" + nextQuestion.source + "</a>";
+
             document.getElementById("answerA").value = nextQuestion.answers[0].answer;
             document.getElementById("answerB").value = nextQuestion.answers[1].answer;
             document.getElementById("answerC").value = nextQuestion.answers[2].answer;
@@ -50,7 +54,7 @@ function getQuestions() {
 
 
         }
-        
+
     };
     xhttp.open("GET", API_QUIZ, true);
     xhttp.send();

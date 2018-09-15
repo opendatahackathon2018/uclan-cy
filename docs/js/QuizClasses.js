@@ -1,4 +1,11 @@
 class Question {
+    get recommendedMeasureUnit() {
+        return this._recommendedMeasureUnit;
+    }
+
+    set recommendedMeasureUnit(value) {
+        this._recommendedMeasureUnit = value;
+    }
 
     get question() {
         return this._question;
@@ -7,8 +14,18 @@ class Question {
     get answers() {
         return this._answers;
     }
-    constructor(question, answers) {
 
+    get source() {
+        return this._source;
+    }
+
+    set source(value) {
+        this._source = value;
+    }
+
+    constructor(question, answers, source, measureUnit) {
+        this._recommendedMeasureUnit = measureUnit;
+        this._source = source;
         this._question = question;
         this._answers = answers;
     }
