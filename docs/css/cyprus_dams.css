@@ -30,6 +30,28 @@ body{
     display: none;
 }
 
+.percentages{
+    display:block;
+}
+
+.container{
+    width:80%;
+    margin: 0 auto;
+}
+
+.image-container{
+    float:right;
+}
+
+.image-container img{
+    width: 100%;
+    padding:10px;
+}
+
+.details{
+    float:left;
+}
+
 /** MATERIALIZE CUSTOMIZATION **/
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
     background-color: #1565c0;
@@ -42,3 +64,4 @@ body{
 label {
     color: #333;
 }
+/*******************************/

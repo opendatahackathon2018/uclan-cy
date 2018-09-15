@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/cyprus_dams.css" rel="stylesheet" type="text/css">
+    <title></title>
+</head>
+<body>
+    <div id="main-container" class="container">
+        <div class="details">
+                <h1>Dam Name: <span id="dam-name"></span></h1>
+                <p>Dam Details</p>
+                <ul>
+                    <li>Year of Construction <span id="construction-year"></span></li>
+                    <li>Height <span id="height"></span></li>
+                    <li>Capacity <span id="capacity"></span></li>
+                </ul>
+                <a id="wiki-page" href=""><button>Go to Wikipedia Page</button></a>
+                <a id="map-page" href=""><button>Find on Maps</button></a>
+                <a href="cyprus_dams.html"><button>Go Back</button></a>
+        </div>
+        <div class="image-container">
+                <h1>Dam Image</h1>
+            <img id="dam-image">
+        </div>
+    </div>
+    <script src="js/APIUtils.js"></script>
+    <script src="js/dam_details.js"></script>
+</body>
+</html>

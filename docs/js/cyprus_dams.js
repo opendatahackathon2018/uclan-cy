@@ -38,7 +38,8 @@ function buildDamList(data,containerElement){
         listItems.push(`
             <div class="dam-item">
                 <p>${element.nameEn}</p>
-                <span id="${element.nameEn}-perc"></span>
+                <span class="percentages" id="${element.nameEn}-perc"></span>
+                <a href="dam_details.html?damName=${element.nameEn}">Dam Details</a>
             </div>
         `);
     });
