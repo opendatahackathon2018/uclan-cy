@@ -23,7 +23,9 @@ function populateDetails(data){
 
     if(damName == null || damName == "" || damName == undefined || currentDam == undefined){
         var mainContainer = document.getElementById('main-container');
-        mainContainer.innerHTML = '<h1>Dam Not Found</h1>';
+        mainContainer.innerHTML = `
+            <div class="row"><div class="col s12 center-align"><h1>Dam Not Found</h1></div></div>
+        `;
         return;
     }
 
@@ -42,6 +44,9 @@ function populateDetails(data){
     for(var e in nameEl){
         nameEl[e].innerHTML = currentDam.nameEn;
     }
+
+    //Setting page title
+    document.title = currentDam.nameEn + " Cyprus Water";
 
     constructionYearEl.innerHTML = currentDam.yearOfConstruction;
     heightEl.innerHTML = currentDam.height;

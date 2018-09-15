@@ -89,12 +89,11 @@ class Quiz {
 
             //Compare the user's answer with the correct answer:
             var result;
-            console.log("USER ANSWER -> " + answer);
-            console.log("CORRECT ANSWER -> " + correctAnswer.answer);
-            if (correctAnswer.answer == answer) {
+            if (correctAnswer.answer === answer) {
                 result = true;
             }
             else result = false;
+            this._currentQuestionIndex++;
             return result;
         }
     }

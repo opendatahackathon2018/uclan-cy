@@ -7,11 +7,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="css/cyprus_dams.css" rel="stylesheet" type="text/css"/>
     <script src="js/APIUtils.js"></script>
+    <script src="js/ConversionUnit.js"></script>
+    <script src="js/Cookies.js"></script>
     <script src="js/QuizClasses.js"></script>
     <script src="js/GetQuestions.js"></script>
-    <script>var QUIZ;</script>
+    <script>
+        var QUIZ;
+        var conversionRates = [];
+        var selectedConversionRateIndex = 0;
+    </script>
 </head>
-<body onload="getQuestions();">
+<body onload="getMeasureUnits();">
 
 <div id="quizLoader" class="center-align">
     <div class="preloader-wrapper big active">
@@ -34,41 +40,44 @@
     <p>Question <span id="questionNumber"></span></p>
     <p id="questionContent"></p>
 
-    <p><small>Source: <span id="questionSource"></span></small></p>
+    <p>
+        <small>Source: <span id="questionSource"></span></small>
+    </p>
 
     <div id="answerOptionsContainer">
         <p>
             <label>
                 <input class="with-gap answer" name="answer" id="answerA" value="" onclick="enableSubmitBtn()"
                        type="radio"/>
-                <span id="labelAnswerA"></span>
+                <span class="answerLabel" id="labelAnswerA"></span><span class="answerLabelUnits" id="answerLabelUnitsA"></span>
             </label>
         </p>
         <p>
             <label>
                 <input class="with-gap answer" name="answer" id="answerB" value="" onclick="enableSubmitBtn()"
                        type="radio"/>
-                <span id="labelAnswerB"></span>
+                <span class="answerLabel" id="labelAnswerB"></span><span class="answerLabelUnits" id="answerLabelUnitsB"></span>
             </label>
         </p>
         <p>
             <label>
                 <input class="with-gap answer" name="answer" id="answerC" value="" onclick="enableSubmitBtn()"
                        type="radio"/>
-                <span id="labelAnswerC"></span>
+                <span class="answerLabel" id="labelAnswerC"></span><span class="answerLabelUnits" id="answerLabelUnitsC"></span>
             </label>
         </p>
         <p>
             <label>
                 <input class="with-gap answer" name="answer" id="answerD" value="" onclick="enableSubmitBtn()"
                        type="radio"/>
-                <span id="labelAnswerD"></span>
+                <span class="answerLabel" id="labelAnswerD"></span><span class="answerLabelUnits" id="answerLabelUnitsD"></span>
             </label>
         </p>
     </div>
 
     <div id="submitButtonContainer">
-        <input id="submitButton" class="btn blue darken-3" type="button" value="Submit" onclick="submitAnswer()" style="visibility: hidden"/>
+        <input id="submitButton" class="btn blue darken-3" type="button" value="Submit" onclick="submitAnswer()"
+               style="visibility: hidden"/>
     </div>
 
 </div>
@@ -77,9 +86,16 @@
     <p>The quiz has no questions.</p>
 </div>
 
+<!--Dropdown-->
+<select id="measurementsList" onchange="selectedConversionRateIndex = measurementsList.selectedIndex; updateUnits()"></select>
+
+
+<div class="carousel" id="measurementsCarousel"></div>
+
 <script>
 
     var currentQuestionIndex = 0;
+    var measurementsList = document.getElementById("measurementsList");
 
     function submitAnswer() {
         var question = QUIZ.getNextQuestion();
@@ -95,17 +111,83 @@
         if (answerResult === -1) { //The quiz is finished.
             alert("Finished!"); //TODO Replace.
         }
-        else if (answerResult === true) { //Answer is correct.
-            alert("Correct");
-        }
-        else if (answerResult === false) { //Answer is wrong.
-            alert("Wrong");
+        else {
+            if (answerResult === true) { //Answer is correct.
+                alert("Correct");
+            }
+            else if (answerResult === false) { //Answer is wrong.
+                alert("Wrong");
+            }
+            displayNextQuestion(QUIZ);
         }
     }
 
     function enableSubmitBtn() {
         var button = document.getElementById("submitButton");
         button.style.visibility = "visible";
+    }
+
+    function getMeasureUnits() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var jsonObject = JSON.parse(this.responseText);
+                for (var i = 0; i < jsonObject.length; i++) {
+                    conversionRates.push(new ConversionUnit(jsonObject[i].id, jsonObject[i].nameEl, jsonObject[i].nameEn, jsonObject[i].imageUrl, jsonObject[i].ratio));
+                    if (jsonObject[i].nameEn === getCookie(MEASURE_TYPE_COOKIE)) {
+                        selectedConversionRateIndex = i;
+                    }
+
+                    //POPULATE SLIDER CONTENT:
+                    var slider = document.getElementById("measurementsCarousel");
+                    var newItem = document.createElement("a");
+                    var image = document.createElement("img");
+                    var url = "https://cyprus-water.appspot.com" + jsonObject[i].imageUrl;
+                    image.src = url;
+                    newItem.className = "carousel-item";
+                    newItem.href = "#";
+                    newItem.appendChild(image);
+                    slider.appendChild(newItem);
+
+                    //POPULATE DROPDOWN:
+                    var newOptionItem = document.createElement("option");
+                    newOptionItem.innerHTML = jsonObject[i].nameEn;
+                    measurementsList.appendChild(newOptionItem);
+                }
+
+                //INITIALIZE SLIDER:
+                M.AutoInit();
+                document.addEventListener('DOMContentLoaded', function () {
+                    var elems = document.querySelectorAll('.carousel');
+                    var instances = M.Carousel.init(elems, options);
+                });
+
+                getQuestions();
+            }
+        };
+        xhttp.open("GET", API_MEASUREUNITS, true);
+        xhttp.send();
+    }
+
+    function updateUnits() {
+
+        //Update unit numbers:
+        var answerLabelElements = document.getElementsByClassName("answerLabel");
+        for (var i = 0; i < answerLabelElements.length; i++) {
+            console.log("PREV-" + answerLabelElements[i].innerHTML);
+            answerLabelElements[i].innerHTML = answerLabelElements[i].innerHTML / conversionRates[selectedConversionRateIndex].ratio;
+            console.log("AFTER-" + answerLabelElements[i].innerHTML);
+        }
+
+        //Update units names:
+        var labelUnitElements = document.getElementsByClassName("answerLabelUnits");
+        for (var i = 0; i < labelUnitElements.length; i++) {
+            labelUnitElements[i].innerHTML = " " + conversionRates[selectedConversionRateIndex].nameEn + "s";
+            labelUnitElements[i].style.fontSize = "1rem";
+        }
+
+        measurementsList.selectedIndex = selectedConversionRateIndex;
+
     }
 
 </script>
