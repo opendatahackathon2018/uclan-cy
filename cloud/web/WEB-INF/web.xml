@@ -85,6 +85,15 @@
         <servlet-name>GetQuizServlet</servlet-name>
         <url-pattern>/api/quiz</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetHistoricInflowServlet</servlet-name>
+        <servlet-class>io.github.nearchos.water.api.GetHistoricInflowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetHistoricInflowServlet</servlet-name>
+        <url-pattern>/api/historic-inflow</url-pattern>
+    </servlet-mapping>
     <!--End of API calls-->
 
     <!--Pages-->
