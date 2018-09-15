@@ -49,7 +49,7 @@ body{
 }
 
 
-.secondary-content, .progress{
+.secondary-content-fix, .progress{
     width:100px;
     height:10px;
 }
@@ -59,7 +59,7 @@ body{
     font-weight: bold;
 }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 440px) {
     nav {
         height: 100px;
         line-height: 40px;
@@ -76,4 +76,8 @@ body{
 
 label {
     color: #333;
+}
+
+#wiki-page{
+    right:100px;
 }

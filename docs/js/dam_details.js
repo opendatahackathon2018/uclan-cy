@@ -30,19 +30,23 @@ function populateDetails(data){
     //Assign data to elements
     //var titleEl = document.getElementById('dam-name');
     var imageEl = document.getElementById('dam-image');
-    var nameEl = document.getElementById('dam-name');
+    var nameEl = document.getElementsByClassName('dam-name');
     var constructionYearEl = document.getElementById('construction-year');
     var heightEl = document.getElementById('height');
     var capacityEl = document.getElementById('capacity');
     var wikiEl = document.getElementById('wiki-page');
     var mapEl = document.getElementById('map-page');
-
     imageEl.src = currentDam.imageUrl;
-    nameEl.innerHTML = currentDam.nameEn;
+
+    //Setting all name classes
+    for(var e in nameEl){
+        nameEl[e].innerHTML = currentDam.nameEn;
+    }
+
     constructionYearEl.innerHTML = currentDam.yearOfConstruction;
     heightEl.innerHTML = currentDam.height;
-    capacityEl.innerHTML = currentDam.capacity + ' Cubic Meters';
-    if(currentDam.wikipediaUrl != ""){
+    capacityEl.innerHTML = (currentDam.capacity/1000000) + ' MCM';
+    if(currentDam.wikipediaUrl != "" && currentDam.wikipediaUrl != null){
         wikiEl.href = currentDam.wikipediaUrl;
     }else{
         wikiEl.parentNode.removeChild(wikiEl);

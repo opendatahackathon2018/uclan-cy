@@ -39,7 +39,7 @@ function buildDamList(data, containerElement) {
     //Itterating through data building the list tiles for each dam
     data.forEach(element => {
         listItems.push(`
-        <a href="dam_details.html?damName=${element.nameEn}" class="blue-text text-darken-1 collection-item">${element.nameEn}<div class="secondary-content">
+        <a href="dam_details.html?damName=${element.nameEn}" class="blue-text text-darken-1 collection-item">${element.nameEn}<div class="secondary-content secondary-content-fix">
         <div class="progress blue lighten-4">
         <div id="${element.nameEn}-perc" class="determinate blue darken-1" style="width: 0%"></div>
         </div>
