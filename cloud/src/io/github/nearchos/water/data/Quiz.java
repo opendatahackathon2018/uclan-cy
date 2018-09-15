@@ -83,21 +83,8 @@ public class Quiz implements Serializable {
         }
     }
 
-    public static final String ALL_QUESTIONS_AS_JSON =
+    public static final String HALF_EMPTY_QUESTIONS_AS_JSON =
             "[\n" +
-                    "  {\n" +
-                    "    \"question\": \"What is the total capacity of Cyprus' dams?\",\n" +
-                    "    \"recommendedMeasureUnit\": \"cubicMeter\",\n" +
-                    "    \"imageUrl\": null,\n" +
-                    "    \"source\": \"http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/reservoir_en/reservoir_en?OpenDocument\",\n" +
-                    "    \"answers\": [\n" +
-                    "      { \"answer\": 291338000, \"correct\": true },\n" +
-                    "      { \"answer\": 191338000, \"correct\": false },\n" +
-                    "      { \"answer\": 391338000, \"correct\": false },\n" +
-                    "      { \"answer\": 91338000, \"correct\": false }\n" +
-                    "    ]\n" +
-                    "  },\n" +
-                    "\n" +
                     "  {\n" +
                     "    \"question\": \"How much water inflow was there in dams in Cyprus in 2017?\",\n" +
                     "    \"recommendedMeasureUnit\": \"cubicMeter\",\n" +
@@ -138,19 +125,6 @@ public class Quiz implements Serializable {
                     "  },\n" +
                     "\n" +
                     "  {\n" +
-                    "    \"question\": \"How much water can a small drip from a faucet waste in a day?\",\n" +
-                    "    \"recommendedMeasureUnit\": \"liter\",\n" +
-                    "    \"imageUrl\": null,\n" +
-                    "    \"source\": \"https://water.usgs.gov/edu/activity-drip.html\",\n" +
-                    "    \"answers\": [\n" +
-                    "      { \"answer\": 0.128, \"correct\": true },\n" +
-                    "      { \"answer\": 1.285, \"correct\": false },\n" +
-                    "      { \"answer\": 0.013, \"correct\": false },\n" +
-                    "      { \"answer\": 0.001, \"correct\": false }\n" +
-                    "    ]\n" +
-                    "  },\n" +
-                    "\n" +
-                    "  {\n" +
                     "    \"question\": \"How much water is needed to produce an egg?\",\n" +
                     "    \"recommendedMeasureUnit\": \"liter\",\n" +
                     "    \"imageUrl\": null,\n" +
@@ -173,6 +147,74 @@ public class Quiz implements Serializable {
                     "      { \"answer\": 2.50, \"correct\": false },\n" +
                     "      { \"answer\": 0.125, \"correct\": false },\n" +
                     "      { \"answer\": 0.012, \"correct\": false }\n" +
+                    "    ]\n" +
+                    "  },\n" +
+                    "\n" +
+                    "  {\n" +
+                    "    \"question\": \"How much water does it take to make a pair of jeans?\",\n" +
+                    "    \"recommendedMeasureUnit\": \"liter\",\n" +
+                    "    \"imageUrl\": null,\n" +
+                    "    \"source\": \"https://www.treehugger.com/clean-water/36-eye-opening-facts-about-water.html\",\n" +
+                    "    \"answers\": [\n" +
+                    "      { \"answer\": 10, \"correct\": true },\n" +
+                    "      { \"answer\": 1, \"correct\": false },\n" +
+                    "      { \"answer\": 0.1, \"correct\": false },\n" +
+                    "      { \"answer\": 0.01, \"correct\": false }\n" +
+                    "    ]\n" +
+                    "  },\n" +
+                    "\n" +
+                    "  {\n" +
+                    "    \"question\": \"How much water does it take to produce 1 Kg of beef?\",\n" +
+                    "    \"recommendedMeasureUnit\": \"liter\",\n" +
+                    "    \"imageUrl\": null,\n" +
+                    "    \"source\": \"https://www.treehugger.com/clean-water/36-eye-opening-facts-about-water.html\",\n" +
+                    "    \"answers\": [\n" +
+                    "      { \"answer\": 15, \"correct\": true },\n" +
+                    "      { \"answer\": 150, \"correct\": false },\n" +
+                    "      { \"answer\": 1.5, \"correct\": false },\n" +
+                    "      { \"answer\": 0.015, \"correct\": false }\n" +
+                    "    ]\n" +
+                    "  },\n" +
+                    "\n" +
+                    "  {\n" +
+                    "    \"question\": \"How much inflow was there in Cyprus' dams in July 2018?\",\n" +
+                    "    \"recommendedMeasureUnit\": \"cubicMeter\",\n" +
+                    "    \"imageUrl\": null,\n" +
+                    "    \"source\": \"http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/reservoir_en/reservoir_en?OpenDocument\",\n" +
+                    "    \"answers\": [\n" +
+                    "      { \"answer\": 50000, \"correct\": true },\n" +
+                    "      { \"answer\": 500000, \"correct\": false },\n" +
+                    "      { \"answer\": 5000000, \"correct\": false },\n" +
+                    "      { \"answer\": 5000, \"correct\": false }\n" +
+                    "    ]\n" +
+                    "  }\n" +
+                    "]";
+
+    public static final String HALF_FULL_QUESTIONS_AS_JSON =
+            "[\n" +
+                    "  {\n" +
+                    "    \"question\": \"What is the total capacity of Cyprus' dams?\",\n" +
+                    "    \"recommendedMeasureUnit\": \"cubicMeter\",\n" +
+                    "    \"imageUrl\": null,\n" +
+                    "    \"source\": \"http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/reservoir_en/reservoir_en?OpenDocument\",\n" +
+                    "    \"answers\": [\n" +
+                    "      { \"answer\": 291338000, \"correct\": true },\n" +
+                    "      { \"answer\": 191338000, \"correct\": false },\n" +
+                    "      { \"answer\": 391338000, \"correct\": false },\n" +
+                    "      { \"answer\": 91338000, \"correct\": false }\n" +
+                    "    ]\n" +
+                    "  },\n" +
+                    "\n" +
+                    "  {\n" +
+                    "    \"question\": \"How much water can a small drip from a faucet waste in a day?\",\n" +
+                    "    \"recommendedMeasureUnit\": \"liter\",\n" +
+                    "    \"imageUrl\": null,\n" +
+                    "    \"source\": \"https://water.usgs.gov/edu/activity-drip.html\",\n" +
+                    "    \"answers\": [\n" +
+                    "      { \"answer\": 0.128, \"correct\": true },\n" +
+                    "      { \"answer\": 1.285, \"correct\": false },\n" +
+                    "      { \"answer\": 0.013, \"correct\": false },\n" +
+                    "      { \"answer\": 0.001, \"correct\": false }\n" +
                     "    ]\n" +
                     "  },\n" +
                     "\n" +
@@ -229,45 +271,6 @@ public class Quiz implements Serializable {
                     "  },\n" +
                     "\n" +
                     "  {\n" +
-                    "    \"question\": \"How much water does it take to make a pair of jeans?\",\n" +
-                    "    \"recommendedMeasureUnit\": \"liter\",\n" +
-                    "    \"imageUrl\": null,\n" +
-                    "    \"source\": \"https://www.treehugger.com/clean-water/36-eye-opening-facts-about-water.html\",\n" +
-                    "    \"answers\": [\n" +
-                    "      { \"answer\": 10, \"correct\": true },\n" +
-                    "      { \"answer\": 1, \"correct\": false },\n" +
-                    "      { \"answer\": 0.1, \"correct\": false },\n" +
-                    "      { \"answer\": 0.01, \"correct\": false }\n" +
-                    "    ]\n" +
-                    "  },\n" +
-                    "\n" +
-                    "  {\n" +
-                    "    \"question\": \"How much water does it take to produce 1 Kg of beef?\",\n" +
-                    "    \"recommendedMeasureUnit\": \"liter\",\n" +
-                    "    \"imageUrl\": null,\n" +
-                    "    \"source\": \"https://www.treehugger.com/clean-water/36-eye-opening-facts-about-water.html\",\n" +
-                    "    \"answers\": [\n" +
-                    "      { \"answer\": 15, \"correct\": true },\n" +
-                    "      { \"answer\": 150, \"correct\": false },\n" +
-                    "      { \"answer\": 1.5, \"correct\": false },\n" +
-                    "      { \"answer\": 0.015, \"correct\": false }\n" +
-                    "    ]\n" +
-                    "  },\n" +
-                    "\n" +
-                    "  {\n" +
-                    "    \"question\": \"How much inflow was there in Cyprus' dams in July 2018?\",\n" +
-                    "    \"recommendedMeasureUnit\": \"cubicMeter\",\n" +
-                    "    \"imageUrl\": null,\n" +
-                    "    \"source\": \"http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/reservoir_en/reservoir_en?OpenDocument\",\n" +
-                    "    \"answers\": [\n" +
-                    "      { \"answer\": 50000, \"correct\": true },\n" +
-                    "      { \"answer\": 500000, \"correct\": false },\n" +
-                    "      { \"answer\": 5000000, \"correct\": false },\n" +
-                    "      { \"answer\": 5000, \"correct\": false }\n" +
-                    "    ]\n" +
-                    "  },\n" +
-                    "\n" +
-                    "  {\n" +
                     "    \"question\": \"The greatest inflow in Cyprus' dams in the last 10 years was in Jan 2012. How much inflow was there?\",\n" +
                     "    \"recommendedMeasureUnit\": \"cubicMeter\",\n" +
                     "    \"imageUrl\": null,\n" +
@@ -277,6 +280,19 @@ public class Quiz implements Serializable {
                     "      { \"answer\": 926340000, \"correct\": false },\n" +
                     "      { \"answer\": 9263400, \"correct\": false },\n" +
                     "      { \"answer\": 926340, \"correct\": false }\n" +
+                    "    ]\n" +
+                    "  },\n" +
+                    "\n" +
+                    "  {\n" +
+                    "    \"question\": \"How much fresh water can the Dhekelia Desalination Plant produce daily?\",\n" +
+                    "    \"recommendedMeasureUnit\": \"cubicMeter\",\n" +
+                    "    \"imageUrl\": null,\n" +
+                    "    \"source\": \"http://www.cyprus.gov.cy/moa/wdd/wdd.nsf/All/D9DD3467701044CDC2256E44003D7207?OpenDocument\",\n" +
+                    "    \"answers\": [\n" +
+                    "      { \"answer\": 40000, \"correct\": true },\n" +
+                    "      { \"answer\": 4000, \"correct\": false },\n" +
+                    "      { \"answer\": 400000, \"correct\": false },\n" +
+                    "      { \"answer\": 400, \"correct\": false }\n" +
                     "    ]\n" +
                     "  }\n" +
                     "\n" +

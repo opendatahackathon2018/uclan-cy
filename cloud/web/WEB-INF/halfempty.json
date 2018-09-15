@@ -1,18 +1,5 @@
 [
   {
-    "question": "What is the total capacity of Cyprus' dams?",
-    "recommendedMeasureUnit": "cubicMeter",
-    "imageUrl": null,
-    "source": "http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/reservoir_en/reservoir_en?OpenDocument",
-    "answers": [
-      { "answer": 291338000, "correct": true },
-      { "answer": 191338000, "correct": false },
-      { "answer": 391338000, "correct": false },
-      { "answer": 91338000, "correct": false }
-    ]
-  },
-
-  {
     "question": "How much water inflow was there in dams in Cyprus in 2017?",
     "recommendedMeasureUnit": "cubicMeter",
     "imageUrl": null,
@@ -52,19 +39,6 @@
   },
 
   {
-    "question": "How much water can a small drip from a faucet waste in a day?",
-    "recommendedMeasureUnit": "liter",
-    "imageUrl": null,
-    "source": "https://water.usgs.gov/edu/activity-drip.html",
-    "answers": [
-      { "answer": 0.128, "correct": true },
-      { "answer": 1.285, "correct": false },
-      { "answer": 0.013, "correct": false },
-      { "answer": 0.001, "correct": false }
-    ]
-  },
-
-  {
     "question": "How much water is needed to produce an egg?",
     "recommendedMeasureUnit": "liter",
     "imageUrl": null,
@@ -87,58 +61,6 @@
       { "answer": 2.50, "correct": false },
       { "answer": 0.125, "correct": false },
       { "answer": 0.012, "correct": false }
-    ]
-  },
-
-  {
-    "question": "How much water does a five-minute shower use?",
-    "recommendedMeasureUnit": "liter",
-    "imageUrl": null,
-    "source": "https://www.treehugger.com/clean-water/36-eye-opening-facts-about-water.html",
-    "answers": [
-      { "answer": 0.05, "correct": true },
-      { "answer": 0.005, "correct": false },
-      { "answer": 0.5, "correct": false },
-      { "answer": 0.002, "correct": false }
-    ]
-  },
-
-  {
-    "question": "How much water does the World Health Organization recommend per person daily to meet the requirements of most people under most conditions?",
-    "recommendedMeasureUnit": "liter",
-    "imageUrl": null,
-    "source": "https://www.treehugger.com/clean-water/36-eye-opening-facts-about-water.html",
-    "answers": [
-      { "answer": 0.0075, "correct": true },
-      { "answer": 0.075, "correct": false },
-      { "answer": 0.75, "correct": false },
-      { "answer": 7.5, "correct": false }
-    ]
-  },
-
-  {
-    "question": "How much water does the World Health Organization recommends per person daily to cover basic hygiene and food hygiene needs?",
-    "recommendedMeasureUnit": "liter",
-    "imageUrl": null,
-    "source": "https://www.treehugger.com/clean-water/36-eye-opening-facts-about-water.html",
-    "answers": [
-      { "answer": 0.002, "correct": true },
-      { "answer": 0.02, "correct": false },
-      { "answer": 0.2, "correct": false },
-      { "answer": 2.0, "correct": false }
-    ]
-  },
-
-  {
-    "question": "How much water on average, does a European resident use per day?",
-    "recommendedMeasureUnit": "liter",
-    "imageUrl": null,
-    "source": "https://www.treehugger.com/clean-water/36-eye-opening-facts-about-water.html",
-    "answers": [
-      { "answer": 0.19, "correct": true },
-      { "answer": 0.38, "correct": false },
-      { "answer": 0.095, "correct": false },
-      { "answer": 0.043, "correct": false }
     ]
   },
 
@@ -179,19 +101,5 @@
       { "answer": 5000000, "correct": false },
       { "answer": 5000, "correct": false }
     ]
-  },
-
-  {
-    "question": "The greatest inflow in Cyprus' dams in the last 10 years was in Jan 2012. How much inflow was there?",
-    "recommendedMeasureUnit": "cubicMeter",
-    "imageUrl": null,
-    "source": "http://www.cyprus.gov.cy/moa/wdd/WDD.nsf/reservoir_en/reservoir_en?OpenDocument",
-    "answers": [
-      { "answer": 92634000, "correct": true },
-      { "answer": 926340000, "correct": false },
-      { "answer": 9263400, "correct": false },
-      { "answer": 926340, "correct": false }
-    ]
   }
-
 ]

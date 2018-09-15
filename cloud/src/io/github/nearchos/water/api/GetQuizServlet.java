@@ -27,12 +27,16 @@ public class GetQuizServlet extends HttpServlet {
 
         final Mood mood = request.getParameter("halffull") != null ? Mood.halffull : Mood.halfempty;
 
-        // todo pick file from mood
-        final Quiz.Question [] allQuestions = gson.fromJson(Quiz.ALL_QUESTIONS_AS_JSON, Quiz.Question[].class);
+        // pick questions based on mood
+        final Quiz.Question [] allQuestions = mood == Mood.halffull ?
+                gson.fromJson(Quiz.HALF_FULL_QUESTIONS_AS_JSON, Quiz.Question[].class)
+                :
+                gson.fromJson(Quiz.HALF_EMPTY_QUESTIONS_AS_JSON, Quiz.Question[].class);
+
         final Vector<Quiz.Question> allQuestionsList = new Vector<>(Arrays.asList(allQuestions));
 
         Collections.shuffle(allQuestionsList);
-        // if needed, limit size to LIMIT
+        // if needed, limit size up to {@link #LIMIT}
         while(allQuestionsList.size() > LIMIT) {
             allQuestionsList.remove(0);
         }
