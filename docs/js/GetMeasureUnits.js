@@ -15,7 +15,7 @@ function getMeasureUnits() {
                 var item = document.createElement("li");
                 item.class = "measureUnitItem";
                 //Styling:
-                if (jsonObject[i].nameEn == getCookie(MEASURE_TYPE_COOKIE)) {
+                if (jsonObject[i].nameEn === getCookie(MEASURE_TYPE_COOKIE)) {
                     item.style.backgroundColor = "#f4ff81";
                 }
                 item.innerHTML = "<a href='#' onClick='setCookie(MEASURE_TYPE_COOKIE, \"" + jsonObject[i].nameEn + "\"); setCookie(MEASURE_TYPE_RATIO_COOKIE, \"" + jsonObject[i].ratio + "\"); '>" + jsonObject[i].nameEn + "</a>";
