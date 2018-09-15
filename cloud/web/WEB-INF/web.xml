@@ -77,6 +77,14 @@
         <url-pattern>/api/measure-units</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>GetQuizServlet</servlet-name>
+        <servlet-class>io.github.nearchos.water.api.GetQuizServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetQuizServlet</servlet-name>
+        <url-pattern>/api/quiz</url-pattern>
+    </servlet-mapping>
     <!--End of API calls-->
 
     <!--Pages-->
