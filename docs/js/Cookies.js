@@ -1,3 +1,7 @@
+//COOKIE NAMES:
+const MEASURE_TYPE_COOKIE = "COOKIE_MEASURE_TYPE";
+
+
 //Sets a cookie with a specific name, value and expiration time.
 //If a cookie with the same name already exists, the cookie is replaced.
 function setCookie(cname, cvalue, exdays) {
