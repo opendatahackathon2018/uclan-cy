@@ -18,16 +18,22 @@ import java.io.Serializable;
 
 public class MeasureUnit implements Serializable {
 
+    private String id;
     private String nameEl;
     private String nameEn;
     private String imageUrl;
     private double ratio; // how many cubic meters in one unit of this
 
-    public MeasureUnit(String nameEl, String nameEn, String imageUrl, double ratio) {
+    public MeasureUnit(String id, String nameEl, String nameEn, String imageUrl, double ratio) {
+        this.id = id;
         this.nameEl = nameEl;
         this.nameEn = nameEn;
         this.imageUrl = imageUrl;
         this.ratio = ratio;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getNameEl() {
@@ -47,16 +53,16 @@ public class MeasureUnit implements Serializable {
     }
 
     public static final MeasureUnit [] DEFAULT_MEASURE_UNITS = {
-            new MeasureUnit("Σταγόνα", "Drop", "/images/units/drop.png", .00000005d),
-            new MeasureUnit("Κουταλάκι Τσαγιού", "Tea Spoon", "/images/units/teaspoon.png", .000005d),
-            new MeasureUnit("Κουταλάκι Σούπας", "Soup Spoon", "/images/units/soupspoon.png", .000015d),
-            new MeasureUnit("Φλυτζάνι", "Cup", "/images/units/coffee-cup.png", .000284d),
-            new MeasureUnit("Λίτρο", "Liter", "/images/units/fresh-milk-box.png", 0.001d),
-            new MeasureUnit("Κυβικό Μέτρο", "Cubic Meter", "/images/units/cube.png", 1d),
-            new MeasureUnit("Ελέφαντας", "Elephant", "/images/units/elephant.png", 6d),
-            new MeasureUnit("Κοντέϊνερ 20 Ποδών", "20 Feet Container", "/images/units/container.png", 38.267525764d),
-            new MeasureUnit("Πισίνα Ολυμπιακών Διαστάσεων", "Olympic Size Pool", "/images/units/pool.png", 4687.5d),
-            new MeasureUnit("Χωρητικότητα Φράγματος Κούρη", "Kouris Dam Capacity", "/images/units/dam.png", 115000000d),
-            new MeasureUnit("Κυβικό Χιλιόμετρο", "Cubic Kilometer", "/images/units/cube_km.png",1000000000d)
+            new MeasureUnit("drop", "Σταγόνα", "Drop", "/images/units/drop.png", .00000005d),
+            new MeasureUnit("teaSpoon", "Κουταλάκι Τσαγιού", "Tea Spoon", "/images/units/teaspoon.png", .000005d),
+            new MeasureUnit("soupSpoon", "Κουταλάκι Σούπας", "Soup Spoon", "/images/units/soupspoon.png", .000015d),
+            new MeasureUnit("cup", "Φλυτζάνι", "Cup", "/images/units/coffee-cup.png", .000284d),
+            new MeasureUnit("liter", "Λίτρο", "Liter", "/images/units/fresh-milk-box.png", 0.001d),
+            new MeasureUnit("cubicMeter", "Κυβικό Μέτρο", "Cubic Meter", "/images/units/cube.png", 1d),
+            new MeasureUnit("elephant", "Ελέφαντας", "Elephant", "/images/units/elephant.png", 6d),
+            new MeasureUnit("container", "Κοντέϊνερ 20 Ποδών", "20 Feet Container", "/images/units/container.png", 38.267525764d),
+            new MeasureUnit("pool", "Πισίνα Ολυμπιακών Διαστάσεων", "Olympic Size Pool", "/images/units/pool.png", 4687.5d),
+            new MeasureUnit("dam", "Χωρητικότητα Φράγματος Κούρη", "Kouris Dam Capacity", "/images/units/dam.png", 115000000d),
+            new MeasureUnit("cubicKilometer", "Κυβικό Χιλιόμετρο", "Cubic Kilometer", "/images/units/cube_km.png",1000000000d)
     };
 }

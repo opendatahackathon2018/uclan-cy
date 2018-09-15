@@ -14,6 +14,22 @@ body{
     margin-bottom:50px;
 }
 
+#submitButtonContainer {
+    margin-top: 20px;
+}
+
+#quizContainer {
+    display: none;
+}
+
+#errorContainer {
+    display: none;
+}
+
+.percentages{
+    display:block;
+}
+
 .custom-container{
     width:80%;
     margin: 0 auto;
@@ -32,6 +48,7 @@ body{
     float:left;
 }
 
+
 .secondary-content, .progress{
     width:100px;
     height:10px;
@@ -47,4 +64,16 @@ body{
         height: 100px;
         line-height: 40px;
     }
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color: #1565c0;
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
+    border: 2px solid #1565c0;
+}
+
+label {
+    color: #333;
 }

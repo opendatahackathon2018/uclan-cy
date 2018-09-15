@@ -18,7 +18,7 @@ function getMeasureUnits() {
                 if (jsonObject[i].nameEn == getCookie(MEASURE_TYPE_COOKIE)) {
                     item.style.backgroundColor = "#f4ff81";
                 }
-                item.innerHTML = "<a href='#' onClick='setCookie(MEASURE_TYPE_COOKIE, \"" + jsonObject[i].nameEn + "\"); /*TODO REMOVE ALERT*/ alert(\"The selected type is: \" + getCookie(MEASURE_TYPE_COOKIE)); '>" + jsonObject[i].nameEn + "</a>";
+                item.innerHTML = "<a href='#' onClick='setCookie(MEASURE_TYPE_COOKIE, \"" + jsonObject[i].nameEn + "\"); setCookie(MEASURE_TYPE_RATIO_COOKIE, \"" + jsonObject[i].ratio + "\"); '>" + jsonObject[i].nameEn + "</a>";
                 typesList.appendChild(item);
             }
         }
