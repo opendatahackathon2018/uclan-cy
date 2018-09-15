@@ -17,3 +17,25 @@ body{
     margin-top: 10px;
     text-align:center;
 }
+
+.percentages{
+    display:block;
+}
+
+.container{
+    width:80%;
+    margin: 0 auto;
+}
+
+.image-container{
+    float:right;
+}
+
+.image-container img{
+    width: 100%;
+    padding:10px;
+}
+
+.details{
+    float:left;
+}
