@@ -50,6 +50,7 @@ function getQuestions() {
 
 
         }
+        
     };
     xhttp.open("GET", API_QUIZ, true);
     xhttp.send();

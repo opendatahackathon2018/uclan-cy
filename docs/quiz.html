@@ -38,28 +38,28 @@
     <div id="answerOptionsContainer">
         <p>
             <label>
-                <input class="with-gap" name="answer" class="answer" id="answerA" value="" onclick="enableSubmitBtn()"
+                <input class="with-gap answer" name="answer" id="answerA" value="" onclick="enableSubmitBtn()"
                        type="radio"/>
                 <span id="labelAnswerA"></span>
             </label>
         </p>
         <p>
             <label>
-                <input class="with-gap" name="answer" class="answer" id="answerB" value="" onclick="enableSubmitBtn()"
+                <input class="with-gap answer" name="answer" id="answerB" value="" onclick="enableSubmitBtn()"
                        type="radio"/>
                 <span id="labelAnswerB"></span>
             </label>
         </p>
         <p>
             <label>
-                <input class="with-gap" name="answer" class="answer" id="answerC" value="" onclick="enableSubmitBtn()"
+                <input class="with-gap answer" name="answer" id="answerC" value="" onclick="enableSubmitBtn()"
                        type="radio"/>
                 <span id="labelAnswerC"></span>
             </label>
         </p>
         <p>
             <label>
-                <input class="with-gap" name="answer" class="answer" id="answerD" value="" onclick="enableSubmitBtn()"
+                <input class="with-gap answer" name="answer" id="answerD" value="" onclick="enableSubmitBtn()"
                        type="radio"/>
                 <span id="labelAnswerD"></span>
             </label>
@@ -67,12 +67,12 @@
     </div>
 
     <div id="submitButtonContainer">
-        <input id="submitButton" class="btn blue darken-3" type="button" value="Submit" style="visibility: hidden"/>
+        <input id="submitButton" class="btn blue darken-3" type="button" value="Submit" onclick="submitAnswer()" style="visibility: hidden"/>
     </div>
 
 </div>
 
-<div class="errorContainer">
+<div id="errorContainer">
     <p>The quiz has no questions.</p>
 </div>
 
@@ -80,8 +80,26 @@
 
     var currentQuestionIndex = 0;
 
-    function getNextQuestion() {
-
+    function submitAnswer() {
+        var question = QUIZ.getNextQuestion();
+        var answerElements = document.getElementsByClassName("answer");
+        var userAnswerElement;
+        for (var i = 0; i < answerElements.length; i++) {
+            if (answerElements[i].checked) {
+                userAnswerElement = answerElements[i];
+                break;
+            }
+        }
+        var answerResult = QUIZ.answerQuestion(userAnswerElement.value);
+        if (answerResult === -1) { //The quiz is finished.
+            alert("Finished!"); //TODO Replace.
+        }
+        else if (answerResult === true) { //Answer is correct.
+            alert("Correct");
+        }
+        else if (answerResult === false) { //Answer is wrong.
+            alert("Wrong");
+        }
     }
 
     function enableSubmitBtn() {
