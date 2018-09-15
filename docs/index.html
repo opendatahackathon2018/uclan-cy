@@ -1,3 +1,35 @@
-<h1>Hello World!</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<script src="js/APIUtils.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>APP NAME</title>
+    <script src="js/Cookies.js"></script>
+
+</head>
+
+<body>
+
+<h1>Welcome</h1>
+<p>What is your name?</p>
+<form id="nameForm">
+    <input type="text" id="userNameInput" maxlength="255" placeholder="Enter your name" required />
+    <input type="button" value="OK" onclick="setUserName();" />
+</form>
+
+<script>
+    function setUserName(){
+        var userName = document.getElementById("userNameInput").value;
+        if (userName.length < 1) {
+            alert("Please provide a valid first name");
+            return;
+        }
+        setCookie(USER_NAME_COOKIE, userName);
+        console.log(getCookie(USER_NAME_COOKIE));
+        document.location = "glassPage.html";
+    }
+</script>
+
+</body>
+
+</html>

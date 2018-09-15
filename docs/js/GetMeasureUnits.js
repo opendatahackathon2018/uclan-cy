@@ -13,7 +13,12 @@ function getMeasureUnits() {
             var jsonObject = JSON.parse(this.responseText);
             for (var i = 0; i < jsonObject.length; i++) {
                 var item = document.createElement("li");
-                item.innerHTML = "<a href='#' onClick='setCookie(MEASURE_TYPE_COOKIE, \"" + jsonObject[i].nameEn + "\", 365); /*TODO REMOVE ALERT*/ alert(\"The selected type is: \" + getCookie(MEASURE_TYPE_COOKIE)); '>" + jsonObject[i].nameEn + "</a>";
+                item.class = "measureUnitItem";
+                //Styling:
+                if (jsonObject[i].nameEn == getCookie(MEASURE_TYPE_COOKIE)) {
+                    item.style.backgroundColor = "#f4ff81";
+                }
+                item.innerHTML = "<a href='#' onClick='setCookie(MEASURE_TYPE_COOKIE, \"" + jsonObject[i].nameEn + "\"); /*TODO REMOVE ALERT*/ alert(\"The selected type is: \" + getCookie(MEASURE_TYPE_COOKIE)); '>" + jsonObject[i].nameEn + "</a>";
                 typesList.appendChild(item);
             }
         }
