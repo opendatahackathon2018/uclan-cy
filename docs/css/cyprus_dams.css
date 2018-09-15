@@ -17,3 +17,28 @@ body{
     margin-top: 10px;
     text-align:center;
 }
+
+#submitButtonContainer {
+    margin-top: 20px;
+}
+
+#quizContainer {
+    display: none;
+}
+
+.errorContainer {
+    display: none;
+}
+
+/** MATERIALIZE CUSTOMIZATION **/
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color: #1565c0;
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
+    border: 2px solid #1565c0;
+}
+
+label {
+    color: #333;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="css/cyprus_dams.css" rel="stylesheet" type="text/css"/>
+    <script src="js/APIUtils.js"></script>
+    <script src="js/QuizClasses.js"></script>
+    <script src="js/GetQuestions.js"></script>
+    <script>var QUIZ;</script>
+</head>
+<body onload="getQuestions();">
+
+<div id="quizLoader" class="center-align">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="quizContainer" style="margin: auto; max-width: 500px">
+
+    <p>Question <span id="questionNumber"></span></p>
+    <p id="questionContent"></p>
+
+
+    <div id="answerOptionsContainer">
+        <p>
+            <label>
+                <input class="with-gap" name="answer" class="answer" id="answerA" value="" onclick="enableSubmitBtn()"
+                       type="radio"/>
+                <span id="labelAnswerA"></span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input class="with-gap" name="answer" class="answer" id="answerB" value="" onclick="enableSubmitBtn()"
+                       type="radio"/>
+                <span id="labelAnswerB"></span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input class="with-gap" name="answer" class="answer" id="answerC" value="" onclick="enableSubmitBtn()"
+                       type="radio"/>
+                <span id="labelAnswerC"></span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input class="with-gap" name="answer" class="answer" id="answerD" value="" onclick="enableSubmitBtn()"
+                       type="radio"/>
+                <span id="labelAnswerD"></span>
+            </label>
+        </p>
+    </div>
+
+    <div id="submitButtonContainer">
+        <input id="submitButton" class="btn blue darken-3" type="button" value="Submit" style="visibility: hidden"/>
+    </div>
+
+</div>
+
+<div class="errorContainer">
+    <p>The quiz has no questions.</p>
+</div>
+
+<script>
+
+    var currentQuestionIndex = 0;
+
+    function getNextQuestion() {
+
+    }
+
+    function enableSubmitBtn() {
+        var button = document.getElementById("submitButton");
+        button.style.visibility = "visible";
+    }
+
+</script>
+
+</body>
+</html>
