@@ -100,27 +100,43 @@
 
 </div>
 
-<!-- Correct answer modal-->
-<div id="correctModal" class="modal">
-    <div class="modal-content green white-text center-align">
-        <i class="material-icons large">check</i>
-        <h4>Correct</h4>
-        <p>Your answer is correct!</p>
-    </div>
-    <div class="modal-footer green white-text">
-        <a href="#!" class="modal-close white-text btn-flat" onclick="checkEndOfQuiz();">Next</a>
-    </div>
-</div>
+<!--&lt;!&ndash; Correct answer modal&ndash;&gt;-->
+<!--<div id="correctModal" class="modal">-->
+    <!--<div class="modal-content green white-text center-align">-->
+        <!--<i class="material-icons large">check</i>-->
+        <!--<h4>Correct</h4>-->
+        <!--<p>Your answer is correct!</p>-->
+    <!--</div>-->
+    <!--<div class="modal-footer green white-text">-->
+        <!--<a href="#!" class="modal-close white-text btn-flat" onclick="checkEndOfQuiz();">Next</a>-->
+    <!--</div>-->
+<!--</div>-->
 
-<!-- Wrong answer modal-->
-<div id="wrongModal" class="modal">
-    <div class="modal-content red white-text center-align">
+<!--&lt;!&ndash; Wrong answer modal&ndash;&gt;-->
+<!--<div id="wrongModal" class="modal">-->
+    <!--<div class="modal-content red white-text center-align">-->
+        <!--<i class="material-icons large">clear</i>-->
+        <!--<h4>Wrong</h4>-->
+        <!--<p>Your answer is incorrect! The correct answer is: <span id="correctAnswer"></span></p>-->
+    <!--</div>-->
+    <!--<div class="modal-footer red white-text">-->
+        <!--<a href="#!" class="modal-close white-text btn-flat" onclick="checkEndOfQuiz();">Next</a>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!-- Correct answers list modal-->
+<div id="correctAnswersListModal" class="modal">
+    <div class="modal-content blue darken-3 white-text center-align">
         <i class="material-icons large">clear</i>
-        <h4>Wrong</h4>
-        <p>Your answer is incorrect! The correct answer is: <span id="correctAnswer"></span></p>
+        <h4>Correct Answers</h4>
+        <!--<div>Correct Answers: <p id="correctAnswersNumber"></p></div>-->
+        <!--<div>Wrong Answers: <p id="wrongAnswersNumber"></p></div>-->
+        <div id="correctAnswersList">
+
+        </div>
     </div>
-    <div class="modal-footer red white-text">
-        <a href="#!" class="modal-close white-text btn-flat" onclick="checkEndOfQuiz();">Next</a>
+    <div class="modal-footer blue darken-3 white-text">
+        <a href="#!" class="modal-close white-text btn-flat" onclick="document.location = 'insertName.html'">OK</a>
     </div>
 </div>
 
@@ -314,8 +330,8 @@
 
         if (answerStatus._questionResult) {
             console.log("Correct");
-            var instance = M.Modal.getInstance(document.getElementById("correctModal"));
-            instance.open();
+            // var instance = M.Modal.getInstance(document.getElementById("correctModal"));
+            // instance.open();
         }
         else {
             var answers = currentQuestion.answers;
@@ -326,9 +342,9 @@
                 }
             }
             console.log("Wrong --> Your answer: " + userAnswerElement.value + " || Correct answer: " + correctAnswer.answer);
-            document.getElementById("correctAnswer").innerHTML = correctAnswer.answer / MEASUREMENT_UNITS[selectedMeasurementIndex].ratio + ".";
-            var instance = M.Modal.getInstance(document.getElementById("wrongModal"));
-            instance.open();
+            // document.getElementById("correctAnswer").innerHTML = correctAnswer.answer / MEASUREMENT_UNITS[selectedMeasurementIndex].ratio + ".";
+            // var instance = M.Modal.getInstance(document.getElementById("wrongModal"));
+            // instance.open();
         }
 
         if (answerStatus._questionResult) { //Correct, give points:
@@ -346,11 +362,35 @@
             radioButtons[i].checked = false;
         }
 
+        checkEndOfQuiz();
+
     }
 
     function checkEndOfQuiz() {
         if (answerStatus._endOfQuiz) {
-            document.location = "insertName.html";
+            var correctAnswersList = document.getElementById("correctAnswersList");
+            var correctAnswers = 0;
+            var wrongAnswers = 0;
+            for (var i = 0; i < ALL_QUESTIONS.length; i++) {
+                var question = ALL_QUESTIONS[i];
+                //Find correct answer:
+                var correctAnswer;
+                for (var j = 0; j < question.answers.length; j++) {
+                    var answer = question.answers[j];
+                    if (answer.correct) {
+                        correctAnswer = answer;
+                        break;
+                    }
+                }
+
+                //Create the list items:
+                var newItem = document.createElement("p");
+                newItem.innerHTML = "Question: <i>\"" + question.question + "\"</i> <br/><span class='questionAnswer'>Answer: " + (correctAnswer.answer / MEASUREMENT_UNITS[selectedMeasurementIndex].ratio) + " " + MEASUREMENT_UNITS[selectedMeasurementIndex].nameEn + "s </span>";
+                newItem.className = "questionAnswerBubble";
+                correctAnswersList.appendChild(newItem);
+            }
+            var instance = M.Modal.getInstance(document.getElementById("correctAnswersListModal"));
+            instance.open();
         }
         else {
             getNextQuestion();
