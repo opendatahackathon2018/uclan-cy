@@ -104,11 +104,16 @@ table.highlight tbody tr:hover {
     margin: 0px;
     padding: 0;
     display: inline-block;
-    background-color: rgb(0, 128, 75);
+    background-color: rgba(0, 110, 255, 0.815);
     height: 100%;
     width: 7.4%;
     border: solid 0.1px white;
     text-align: center;
+}
+
+.stat-box-active:hover{
+    border-radius: 100px;
+    transition: all 1s;
 }
 
 .year-row {
@@ -117,41 +122,41 @@ table.highlight tbody tr:hover {
 }
 
 .point-one {
-    background-color: rgba(255, 0, 0, 0.747);
+    background-color: rgb(188, 225, 255);
 }
 
 .point-two {
-    background-color: rgba(255, 51, 0, 0.555);
+    background-color: rgb(160, 212, 255);
 }
 
 .point-three {
-    background-color: rgba(255, 115, 0, 0.555);
+    background-color: rgb(137, 202, 255);
 }
 
 .point-four {
-    background-color: rgba(255, 153, 0, 0.555);
+    background-color: rgb(118, 193, 255);
 }
 
 .point-five {
-    background-color: rgba(255, 208, 0, 0.555);
+    background-color: rgb(100, 182, 255);
 }
 
 .point-six {
-    background-color: rgba(255, 230, 0, 0.555);
+    background-color: rgb(81, 177, 255);
 }
 
 .point-seven {
-    background-color: rgba(229, 255, 0, 0.555);
+    background-color: rgb(67, 171, 255);
 }
 
 .point-eight {
-    background-color: rgba(187, 255, 0, 0.555);
+    background-color: rgb(49, 162, 255);
 }
 
 .point-nine {
-    background-color: rgba(81, 255, 0, 0.555);
+    background-color: rgb(23, 151, 255);
 }
 
 .one {
-    background-color: rgba(0, 255, 64, 0.801);
+    background-color: rgb(0, 132, 255);
 }

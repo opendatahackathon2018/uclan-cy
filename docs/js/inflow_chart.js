@@ -2,14 +2,14 @@
     getYearlyInflow();
   })();
 
-var months = ['---', 'jan', 'feb', 'mar', 'apr', 'may', 'june', 'july', 'aug', 'sep', 'oct', 'nov', 'dec'];
+var months = ['💦', 'jan', 'feb', 'mar', 'apr', 'may', 'june', 'july', 'aug', 'sep', 'oct', 'nov', 'dec'];
 var monthsRow = document.getElementById('months');
 var container = document.getElementById('inflow-chart');
 var monthRowHTML = [];
 
 //Creating the months row
 months.forEach((e) => {
-    monthRowHTML.push(`<div class="stat-box"><p style="transform:rotate(-60deg)">${e}</p></div>`);
+    monthRowHTML.push(`<div class="stat-box"><p style="transform:rotate(-60deg); color:white">${e}</p></div>`);
 });
 monthsRow.innerHTML = monthRowHTML.join("");
 
@@ -22,12 +22,12 @@ function addRow(year, data, container,scale) {
     //Add boxes into row
     var currentRowHTML = [];
     //Adding Year box
-    currentRowHTML.push(`<div class="stat-box"><p style="transform:rotate(-60deg);">${year}</p></div>`);
+    currentRowHTML.push(`<div class="stat-box"><p style="transform:rotate(-60deg); color:white">${year}</p></div>`);
     //Adding stat boxes for each month of the year
     data.forEach((number) => {
         var scaleForClass = Math.round((number / scale[1]) * 10) / 10;
         var roundedNumber = Math.round(number * 10) / 10;
-        currentRowHTML.push(`<div class="stat-box ${getClass(scaleForClass)}"><p>${roundedNumber}</p></div>`);
+        currentRowHTML.push(`<div class="stat-box stat-box-active ${getClass(scaleForClass)}"><p>${roundedNumber}</p></div>`);
     });
     newRow.innerHTML = currentRowHTML.join("");
     container.appendChild(newRow);
