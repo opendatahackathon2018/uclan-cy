@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <script src="js/APIUtils.js"></script>
+    <script src="js/MeasurementUnit.js"></script>
+    <script src="js/QuizClasses.js"></script>
+    <script src="js/Cookies.js"></script>
+    <script>
+        //GLOBALS:
+        var MEASUREMENT_UNITS = [];
+        var ALL_QUESTIONS = [];
+        var QUIZ;
+        var currentQuestion;
+        var selectedMeasurementIndex = 0;
+    </script>
+</head>
+<body onload="getMeasurementUnits()">
+
+<div class="quizContainer">
+    <p id="questionContent"></p>
+    <small id="sourceLabel"></small><small id="sourceContent"></small>
+    <p>
+        <input type="radio" name="answer" id="answerA" class="answer" onclick="document.getElementById('submitButton').style.visibility = 'visible'"/>
+        <label for="answerA" id="answerALabel"></label>
+    </p>
+    <p>
+        <input type="radio" name="answer" id="answerB" class="answer" onclick="document.getElementById('submitButton').style.visibility = 'visible'"/>
+        <label for="answerB" id="answerBLabel"></label>
+    </p>
+    <p>
+        <input type="radio" name="answer" id="answerC" class="answer" onclick="document.getElementById('submitButton').style.visibility = 'visible'"/>
+        <label for="answerC" id="answerCLabel"></label>
+    </p>
+    <p>
+        <input type="radio" name="answer" id="answerD" class="answer" onclick="document.getElementById('submitButton').style.visibility = 'visible'"/>
+        <label for="answerD" id="answerDLabel"></label>
+    </p>
+
+    <p><input type="button" id="submitButton" value="Submit" style="visibility: hidden" /></p>
+
+</div>
+
+<script>
+
+    function getMeasurementUnits() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var jsonObject = JSON.parse(this.responseText);
+                for (var i = 0; i < jsonObject.length; i++) {
+                    MEASUREMENT_UNITS.push(new MeasurementUnit(jsonObject[i].id, jsonObject[i].nameEl, jsonObject[i].nameEn, jsonObject[i].imageUrl, jsonObject[i].ratio));
+                }
+                getAllQuestions();
+            }
+        };
+        xhttp.open("GET", API_MEASUREUNITS, true);
+        xhttp.send();
+    }
+
+    function getAllQuestions() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var jsonObject = JSON.parse(this.responseText);
+                var questionsObject = jsonObject.questions;
+                //console.log(questionsObject);
+
+                for (var i = 0; i < questionsObject.length; i++) {
+                    //console.log(questionsObject[i].question);
+                    var body = questionsObject[i].question;
+                    var recommendedUnit = questionsObject[i].recommendedMeasureUnit;
+                    var source = questionsObject[i].source;
+                    var answersObject = questionsObject[i].answers;
+                    var ANSWERS = [];
+
+                    for (var j = 0; j < answersObject.length; j++) {
+                        ANSWERS.push(new Answer(answersObject[j].answer, answersObject[j].correct));
+                    }
+                    ALL_QUESTIONS.push(new Question(body, ANSWERS, source, recommendedUnit));
+                }
+                initializeQuiz();
+            }
+        };
+        xhttp.open("GET", API_QUIZ, true);
+        xhttp.send();
+    }
+
+    function initializeQuiz() {
+
+        //Check if the array contains questions:
+        if (ALL_QUESTIONS.length < 1) {
+            alert("Error. The quiz does not contain any questions.");
+            document.location = "index.html";
+            return;
+        }
+
+        //Create the quiz:
+        QUIZ = new Quiz(ALL_QUESTIONS);
+        currentQuestion = QUIZ.getNextQuestion();
+
+        selectedMeasurementIndex = getCookie(MEASURE_TYPE_COOKIE);
+
+        initializeComponents();
+    }
+
+    function initializeComponents() {
+        //Initialize question components:
+        var questionContent = document.getElementById("questionContent");
+        questionContent.innerHTML = currentQuestion.question;
+
+        //Convert answers:
+        //TODO CONVERT!
+        var convertedA = currentQuestion.answers[0].answer;
+        var convertedB = currentQuestion.answers[1].answer;
+        var convertedC = currentQuestion.answers[2].answer;
+        var convertedD = currentQuestion.answers[3].answer;
+
+        //Initialize answer components:
+        document.getElementById("answerA").value = convertedA;
+        document.getElementById("answerB").value = convertedB;
+        document.getElementById("answerC").value = convertedC;
+        document.getElementById("answerD").value = convertedD;
+
+        //Initialize answer labels:
+        document.getElementById("answerALabel").innerHTML = convertedA;
+        document.getElementById("answerBLabel").innerHTML = convertedB;
+        document.getElementById("answerCLabel").innerHTML = convertedC;
+        document.getElementById("answerDLabel").innerHTML = convertedD;
+
+        //Initialize source label and content:
+        if (currentQuestion.source !== "") {
+            document.getElementById("sourceLabel").innerHTML = "Source:";
+            var linkItem = document.createElement("a");
+            linkItem.href = currentQuestion.source;
+            linkItem.innerHTML = currentQuestion.source;
+            document.getElementById("sourceContent").appendChild(linkItem);
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

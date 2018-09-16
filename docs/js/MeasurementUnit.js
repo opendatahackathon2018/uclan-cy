@@ -1,4 +1,4 @@
-class ConversionUnit {
+class MeasurementUnit {
 
     constructor(id, nameEl, nameEn, imageURL, ratio) {
         this._id = id;
