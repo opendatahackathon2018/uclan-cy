@@ -79,7 +79,7 @@ function getYearlyInflow() {
         .then(function (data) {
             //Getting the scale that comes from the largest and smallest inflows of all years
             var scale = getScale(data);
-            if (scale == null || scale==undefined) {
+            if (scale === null || scale === undefined) {
                 console.log('Error getting scale');
             } else {
                 //Creating rows for each year's stats
