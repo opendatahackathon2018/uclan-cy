@@ -124,6 +124,18 @@
     </div>
 </div>
 
+<!--Provide an answer modal-->
+<div id="provideAnswerModal" class="modal">
+    <div class="modal-content amber darken-3 white-text center-align">
+        <i class="material-icons large">warning</i>
+        <h4>Warning</h4>
+        <p>Please provide an answer.</p>
+    </div>
+    <div class="modal-footer amber darken-3 white-text">
+        <a href="#!" class="modal-close white-text btn-flat" onclick="checkEndOfQuiz();">Next</a>
+    </div>
+</div>
+
 
 <script>
 
@@ -290,7 +302,8 @@
         }
 
         if (userAnswerElement == undefined) {
-            alert("Please provide an answer.");
+            var instance = M.Modal.getInstance(document.getElementById("provideAnswerModal"));
+            instance.open();
             return;
         }
 
@@ -345,6 +358,11 @@
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.modal');
         var instances = M.Modal.init(elems, {});
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, {});
     });
 
 </script>
