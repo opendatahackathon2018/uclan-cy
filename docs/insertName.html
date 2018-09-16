@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>APP NAME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/cyprus_dams.css" type="text/css" rel="stylesheet" />
+    <script src="js/APIUtils.js"></script>
+    <script src="js/Cookies.js"></script>
+
+</head>
+
+<body>
+
+<!-- NavBar -->
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper blue darken-1">
+            <a href="#" class="brand-logo center">Cyprus water</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m10 offset-m l8 offset-l2">
+            <div class="card white">
+                <div class="card-content blue-text text-darken-4">
+
+                    <div class="row">
+                        <div class="col s12">
+                            <p class="text-align: left;">What is your name?</p>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col s12">
+                            <form id="nameForm">
+                                <div class="input-field col s12">
+                                    <input type="text" id="userNameInput" class="validate" maxlength="255" placeholder="Enter your name" required/>
+                                    <label for="userNameInput">Your name</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+
+                    <br/><br/>
+
+                    <p style="text-align: center"><input type="button" value="OK" class="btn blue darken-3" onclick="setUserName();"/></p>
+
+
+
+                    <p style="text-align: right">
+                        <a class="red-text text-darken-2" href="#" onclick="document.location = 'index.html'">
+                            Skip
+                        </a>
+                    </p>
+
+
+                </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setUserName() {
+        var userName = document.getElementById("userNameInput").value;
+        if (userName.length < 1) {
+            alert("Please provide a valid first name");
+            return;
+        }
+        setCookie(USER_NAME_COOKIE, userName);
+        console.log(getCookie(USER_NAME_COOKIE));
+
+        sendPointData();
+
+    }
+
+    function sendPointData() {
+        //Send data to API:
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                document.location = "scoreboard.html";
+            }
+            else {
+                var r = confirm("An error occured while sending your record to the server. Try again?");
+                if (r === true) {
+                    sendPointData();
+                }
+            }
+        };
+        xhttp.open("POST", "https://cyprus-water.appspot.com/api/submit-score", true);
+        var sendString = "nickname=" + getCookie(USER_NAME_COOKIE) + "&score=" + getCookie(POINTS_COOKIE);
+        xhttp.send(sendString);
+    }
+
+</script>
+
+</body>
+
+</html>

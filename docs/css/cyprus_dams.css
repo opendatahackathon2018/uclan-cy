@@ -82,6 +82,10 @@ label {
     right:100px;
 }
 
+#sourceLabel {
+    margin-right: 7px;
+}
+
 /* Scoreboard CSS */
 table.highlight tbody tr:hover {
     background-color: #bbdefb !important;
