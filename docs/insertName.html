@@ -96,6 +96,7 @@
                 console.log(this.responseText);
 
                 document.location = "scoreboard.html";
+                setCookie(POINTS_COOKIE, 0);
             }
         };
         var sendString = "nickname=" + getCookie(USER_NAME_COOKIE) + "&score=" + Number(getCookie(POINTS_COOKIE));
