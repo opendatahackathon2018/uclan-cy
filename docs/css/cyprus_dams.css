@@ -66,6 +66,12 @@ body{
     }
 }
 
+@media only screen and (min-width: 460px) {
+    .my-flow-text {
+        font-size:1.2rem;
+    }
+}
+
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
     background-color: #1565c0;
 }
