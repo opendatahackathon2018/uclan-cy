@@ -14,20 +14,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="cyprus_dams.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cyprus_dams.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/cyprus_dams.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
+            <state relative-caret-position="2145">
               <caret line="173" column="14" selection-start-line="173" selection-start-column="14" selection-end-line="173" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="quiz.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="quiz.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/quiz.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="387" column="116" selection-start-line="387" selection-start-column="102" selection-end-line="387" selection-end-column="116" />
+            <state relative-caret-position="246">
+              <caret line="357" column="50" selection-start-line="357" selection-start-column="50" selection-end-line="357" selection-end-column="50" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -44,25 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuizClasses.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/QuizClasses.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="106" column="63" selection-start-line="106" selection-start-column="63" selection-end-line="106" selection-end-column="63" />
-              <folding>
-                <element signature="n#Question#0" />
-                <element signature="n#Answer#0" />
-                <element signature="n#QuizStatus#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="insertName.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/insertName.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="17" column="15" lean-forward="true" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+            <state relative-caret-position="442">
+              <caret line="107" column="95" lean-forward="true" selection-start-line="107" selection-start-column="95" selection-end-line="107" selection-end-column="95" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -110,6 +96,9 @@
       <find>measurementsSelection</find>
       <find>modal</find>
       <find>checkendof</find>
+      <find>const</find>
+      <find>clear</find>
+      <find>setCookie</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -134,9 +123,9 @@
         <option value="$PROJECT_DIR$/quiz2.html" />
         <option value="$PROJECT_DIR$/glassOption.html" />
         <option value="$PROJECT_DIR$/js/QuizClasses.js" />
+        <option value="$PROJECT_DIR$/css/cyprus_dams.css" />
         <option value="$PROJECT_DIR$/insertName.html" />
         <option value="$PROJECT_DIR$/quiz.html" />
-        <option value="$PROJECT_DIR$/css/cyprus_dams.css" />
       </list>
     </option>
   </component>
@@ -149,7 +138,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="300" />
     <option name="y" value="-32" />
     <option name="width" value="1040" />
@@ -237,12 +226,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1536995313287</updated>
-      <workItem from="1536995314645" duration="55991000" />
+      <workItem from="1536995314645" duration="57982000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55991000" />
+    <option name="totallyTimeSpent" value="57982000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -370,17 +359,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/insertName.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="17" column="15" lean-forward="true" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/QuizClasses.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
@@ -393,10 +371,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/cyprus_dams.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2145">
+          <caret line="173" column="14" selection-start-line="173" selection-start-column="14" selection-end-line="173" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="31" column="21" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/insertName.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="107" column="95" lean-forward="true" selection-start-line="107" selection-start-column="95" selection-end-line="107" selection-end-column="95" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/quiz.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="387" column="116" selection-start-line="387" selection-start-column="102" selection-end-line="387" selection-end-column="116" />
+        <state relative-caret-position="246">
+          <caret line="357" column="50" selection-start-line="357" selection-start-column="50" selection-end-line="357" selection-end-column="50" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -409,13 +412,6 @@
             <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/cyprus_dams.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="173" column="14" selection-start-line="173" selection-start-column="14" selection-end-line="173" selection-end-column="14" />
         </state>
       </provider>
     </entry>
