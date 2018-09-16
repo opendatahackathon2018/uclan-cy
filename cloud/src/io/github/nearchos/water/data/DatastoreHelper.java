@@ -119,7 +119,7 @@ public class DatastoreHelper {
 
         for (final Entity scoreEntity : preparedQuery.asIterable()) {
             final String nickname = (String) scoreEntity.getProperty(PROPERTY_SCORE_NICKNAME);
-            final int score = (Integer) scoreEntity.getProperty(PROPERTY_SCORE_SCORE);
+            final long score = (Long) scoreEntity.getProperty(PROPERTY_SCORE_SCORE);
             final Date date = (Date) scoreEntity.getProperty(PROPERTY_SCORE_DATE);
             allScores.add(new Score(nickname, score, date));
         }
