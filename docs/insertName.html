@@ -91,23 +91,17 @@
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
 
-                console.log(getCookie(POINTS_COOKIE));
+                console.log("RAW VALUE: " + getCookie(POINTS_COOKIE));
+                console.log("NUM VALUE: " + Number(getCookie(POINTS_COOKIE)));
                 console.log(this.responseText);
 
-                //document.location = "scoreboard.html";
-            }
-            else {
-                console.log("ERROR SENDING POINTS");
-                // var r = confirm("An error occured while sending your record to the server. Try again?");
-                // if (r === true) {
-                //     sendPointData();
-                // }
+                document.location = "scoreboard.html";
             }
         };
-        xhttp.open("POST", "https://cyprus-water.appspot.com/api/submit-score", true);
-        var sendString = "nickname=" + getCookie(USER_NAME_COOKIE) + "&score=" + getCookie(POINTS_COOKIE);
+        var sendString = "nickname=" + getCookie(USER_NAME_COOKIE) + "&score=" + Number(getCookie(POINTS_COOKIE));
+        xhttp.open("POST", "https://cyprus-water.appspot.com/api/submit-score?" + sendString, true);
         console.log("PARAMS: " + sendString);
-        xhttp.send(sendString);
+        xhttp.send();
     }
 
 </script>
