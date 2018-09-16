@@ -49,6 +49,21 @@ class Answer {
 
 }
 
+class QuizStatus {
+    get questionResult() {
+        return this._questionResult;
+    }
+
+    get endOfQuiz() {
+        return this._endOfQuiz;
+    }
+    constructor(questionResult, endOfQuiz) {
+
+        this._questionResult = questionResult;
+        this._endOfQuiz = endOfQuiz;
+    }
+}
+
 class Quiz {
 
     constructor(questions) {
@@ -70,7 +85,7 @@ class Quiz {
     answerQuestion(answer) {
         //If all questions have been answered:
         if (this._currentQuestionIndex >= this._questions.length) {
-            return -1;
+            return new QuizStatus(false, true);
         }
         //If there are questions to be answered:
         else {
@@ -94,7 +109,8 @@ class Quiz {
             }
             else result = false;
             this._currentQuestionIndex++;
-            return result;
+            var endOfQuiz = this._currentQuestionIndex >= this._questions.length;
+            return new QuizStatus(result, endOfQuiz);
         }
     }
 

@@ -21,7 +21,6 @@ function getMeasureUnits() {
                 item.innerHTML = "<a href='#' onClick='setCookie(MEASURE_TYPE_COOKIE, " + i + ");'>" + jsonObject[i].nameEn + "</a>";
                 typesList.appendChild(item);
             }
-            //TODO CHECK FOR SET VALUE OF COOKIE!
         }
     };
     xhttp.open("GET", API_MEASUREUNITS, true);
