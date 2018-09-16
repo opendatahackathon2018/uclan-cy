@@ -94,7 +94,7 @@ table.highlight tbody tr:hover {
 /* Inflow Chart CSS */
 
 #inflow-chart {
-    width: 500px;
+    width: 90%;
     margin: 0 auto;
     min-height: 500px;
     margin-bottom: 100px;
@@ -109,6 +109,8 @@ table.highlight tbody tr:hover {
     width: 7.4%;
     border: solid 0.1px white;
     text-align: center;
+    overflow: hidden;
+    font-size: 10px;
 }
 
 .stat-box-active:hover{
