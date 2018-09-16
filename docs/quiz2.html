@@ -155,7 +155,7 @@
         QUIZ = new Quiz(ALL_QUESTIONS);
 
         selectedMeasurementIndex = getCookie(MEASURE_TYPE_COOKIE);
-        if (selectedMeasurementIndex === undefined) selectedMeasurementIndex = 0;
+        if (selectedMeasurementIndex === "") selectedMeasurementIndex = 0;
 
 
         getNextQuestion();
