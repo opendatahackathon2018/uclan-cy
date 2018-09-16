@@ -82,12 +82,18 @@ label {
     right:100px;
 }
 
+/* Scoreboard CSS */
+table.highlight tbody tr:hover {
+    background-color: #bbdefb !important;
+}
+
 /* Inflow Chart CSS */
 
 #inflow-chart {
     width: 500px;
     margin: 0 auto;
     min-height: 500px;
+    margin-bottom: 100px;
 }
 
 .stat-box {
