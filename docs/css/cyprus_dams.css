@@ -59,7 +59,7 @@ body{
     font-weight: bold;
 }
 
-@media only screen and (max-width: 440px) {
+@media only screen and (max-width: 460px) {
     nav {
         height: 100px;
         line-height: 40px;
