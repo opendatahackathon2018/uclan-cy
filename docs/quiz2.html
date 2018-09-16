@@ -155,7 +155,7 @@
         QUIZ = new Quiz(ALL_QUESTIONS);
 
         selectedMeasurementIndex = getCookie(MEASURE_TYPE_COOKIE);
-        if (selectedMeasurementIndex === "") selectedMeasurementIndex = 0;
+        if (selectedMeasurementIndex == "" || isNaN(selectedMeasurementIndex)) selectedMeasurementIndex = 0;
 
 
         getNextQuestion();
