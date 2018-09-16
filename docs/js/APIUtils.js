@@ -6,3 +6,5 @@ const API_TIMESERIES = API_BASE_URL + "timeseries";
 const API_MEASUREUNITS = API_BASE_URL + "measure-units";
 const API_QUIZ = API_BASE_URL + "quiz";
 const API_SCOREBOARD_INSERT = API_BASE_URL + "submit-score";
+const API_INFLOW = API_BASE_URL + "historic-inflow";
+const API_SCOREBOARD = API_BASE_URL + "leaderboard";
