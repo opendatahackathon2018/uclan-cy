@@ -25,6 +25,7 @@
         <nav>
             <div class="nav-wrapper blue darken-1">
                 <a href="index.html" class="brand-logo center">Cyprus Water 💦</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="inflow_chart.html">Inflow Chart</a></li>
@@ -33,12 +34,10 @@
         </nav>
     </div>
 
-    <!-- Mobile -->
+    <!-- Mobile Sidenav -->
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="inflow_chart.html">Inflow Chart</a></li>
     </ul>
 
     <!-- The water gauge -->
@@ -51,6 +50,7 @@
         </div>
     </div>
 
+    <!-- Quiz Button -->
     <p class="center-align">Do you want to learn some fun facts about water resources in Cyprus?</p>
     <div class="center-align">
         <a href="quiz.html" class="waves-effect waves-light blue darken-1 btn-large">Quiz</a>
@@ -72,9 +72,17 @@
 
     </div>
 
-
     <script src="js/APIUtils.js"></script>
     <script src="js/cyprus_dams.js"></script>
+
+    <!-- Mobile Sidenav Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+
+    </script>
 </body>
 
 </html>
