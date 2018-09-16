@@ -21,7 +21,7 @@ function populateDetails(data){
     var currentDam = data.filter((e) => { return e.nameEn == damName });
     var currentDam = currentDam[0];
 
-    if(damName == null || damName == "" || damName == undefined || currentDam == undefined){
+    if(damName === null || damName == "" || damName === undefined || currentDam === undefined){
         var mainContainer = document.getElementById('main-container');
         mainContainer.innerHTML = `
             <div class="row"><div class="col s12 center-align"><h1>Dam Not Found</h1></div></div>
