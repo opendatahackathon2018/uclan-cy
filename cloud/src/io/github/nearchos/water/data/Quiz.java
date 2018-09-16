@@ -146,7 +146,7 @@ public class Quiz implements Serializable {
                     "      { \"answer\": 1.25, \"correct\": true },\n" +
                     "      { \"answer\": 2.50, \"correct\": false },\n" +
                     "      { \"answer\": 0.125, \"correct\": false },\n" +
-                    "      { \"answer\": 0.012, \"correct\": false }\n" +
+                    "      { \"answer\": 0.010, \"correct\": false }\n" +
                     "    ]\n" +
                     "  },\n" +
                     "\n" +

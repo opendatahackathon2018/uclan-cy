@@ -13,9 +13,14 @@ import java.util.Date;
 public class PostScoreServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        response.setContentType("application/json; charset=utf-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+
         final String nickname = request.getParameter("nickname");
         final String scoreS = request.getParameter("score");
 
+        log("nickname: " + nickname + ", scoreS: " + scoreS);
         try {
             final int score = Integer.parseInt(scoreS);
 
