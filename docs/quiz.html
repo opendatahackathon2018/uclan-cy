@@ -139,6 +139,8 @@
 
 <script>
 
+    var measurementsSelection = document.getElementById("measurementsSelection");
+
     function getMeasurementUnits() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -231,7 +233,8 @@
         }
 
         //Initialize the dropdown list:
-        var measurementsSelection = document.getElementById("measurementsSelection");
+        measurementsSelection.innerHTML = "";
+
         for (var i = 0; i < MEASUREMENT_UNITS.length; i++) {
             var newOptionItem = document.createElement("option");
             newOptionItem.innerHTML = MEASUREMENT_UNITS[i].nameEn;
