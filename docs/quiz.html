@@ -7,6 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/cyprus_dams.css" type="text/css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="js/APIUtils.js"></script>
     <script src="js/MeasurementUnit.js"></script>
     <script src="js/QuizClasses.js"></script>
@@ -19,7 +20,13 @@
         var currentQuestion;
         var selectedMeasurementIndex = 0;
         var currentQuestionIndex = 0;
+        var answerStatus;
     </script>
+    <style>
+        .select-wrapper input.select-dropdown{
+            display:none;
+        }
+    </style>
 </head>
 <body onload="getMeasurementUnits()">
 
@@ -36,7 +43,7 @@
 
 <div class="container">
     <div class="row">
-        <h4 style="text-align: center;">Quiz</h4>
+        <h2 class="blue-text text-darken-1 center-align">Quiz</h2>
         <div class="col s12 m10 offset-m l8 offset-l2">
             <div class="card white">
                 <div class="card-content blue-text text-darken-4" style="overflow: hidden; word-wrap: break-word;">
@@ -93,6 +100,29 @@
 
 </div>
 
+<!-- Correct answer modal-->
+<div id="correctModal" class="modal">
+    <div class="modal-content green white-text center-align">
+        <i class="material-icons large">check</i>
+        <h4>Correct</h4>
+        <p>Your answer is correct!</p>
+    </div>
+    <div class="modal-footer green white-text">
+        <a href="#!" class="modal-close white-text btn-flat" onclick="checkEndOfQuiz();">Next</a>
+    </div>
+</div>
+
+<!-- Wrong answer modal-->
+<div id="wrongModal" class="modal">
+    <div class="modal-content red white-text center-align">
+        <i class="material-icons large">clear</i>
+        <h4>Wrong</h4>
+        <p>Your answer is incorrect! The correct answer is: <span id="correctAnswer"></span></p>
+    </div>
+    <div class="modal-footer red white-text">
+        <a href="#!" class="modal-close white-text btn-flat" onclick="checkEndOfQuiz();">Next</a>
+    </div>
+</div>
 
 
 <script>
@@ -241,7 +271,6 @@
     const formatSeparators = (x) => { return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 
     function formatNumber(number) {
-        console.log(number + typeof(number));
         //number = parseFloat(number.toFixed(4));
         return formatSeparators(number);
     }
@@ -265,10 +294,12 @@
             return;
         }
 
-        var answerStatus = QUIZ.answerQuestion(userAnswerElement.value);
+        answerStatus = QUIZ.answerQuestion(userAnswerElement.value);
 
         if (answerStatus._questionResult) {
-            alert("Correct!");
+            console.log("Correct");
+            var instance = M.Modal.getInstance(document.getElementById("correctModal"));
+            instance.open();
         }
         else {
             var answers = currentQuestion.answers;
@@ -278,23 +309,19 @@
                     correctAnswer = answers[i];
                 }
             }
-            alert("Wrong. The correct answer was: " + correctAnswer.answer / MEASUREMENT_UNITS[selectedMeasurementIndex].ratio + ".");
+            console.log("Wrong --> Your answer: " + userAnswerElement.value + " || Correct answer: " + correctAnswer.answer);
+            document.getElementById("correctAnswer").innerHTML = correctAnswer.answer / MEASUREMENT_UNITS[selectedMeasurementIndex].ratio + ".";
+            var instance = M.Modal.getInstance(document.getElementById("wrongModal"));
+            instance.open();
         }
 
         if (answerStatus._questionResult) { //Correct, give points:
-            if (getCookie(POINTS_COOKIE) === "" || isNan(getCookie(POINTS_COOKIE))) {
+            if (getCookie(POINTS_COOKIE) === "" || isNaN(getCookie(POINTS_COOKIE))) {
                 setCookie(POINTS_COOKIE, 0);
             }
             var points = getCookie(POINTS_COOKIE);
             points += REWARD_POINTS;
             setCookie(POINTS_COOKIE, points);
-        }
-
-        if (answerStatus._endOfQuiz) {
-            document.location = "insertName.html";
-        }
-        else {
-            getNextQuestion();
         }
 
         //Uncheck radio buttons:
@@ -304,6 +331,21 @@
         }
 
     }
+
+    function checkEndOfQuiz() {
+        if (answerStatus._endOfQuiz) {
+            document.location = "insertName.html";
+        }
+        else {
+            getNextQuestion();
+        }
+    }
+
+    M.AutoInit();
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems, {});
+    });
 
 </script>
 

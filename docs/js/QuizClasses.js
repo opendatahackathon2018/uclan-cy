@@ -104,7 +104,7 @@ class Quiz {
 
             //Compare the user's answer with the correct answer:
             var result;
-            if (correctAnswer.answer === answer) {
+            if (Number(correctAnswer.answer) === Number(answer)) {
                 result = true;
             }
             else result = false;
